@@ -1,20 +1,19 @@
 package io.github.shirohoo.racing.adapter;
 
+import static io.github.shirohoo.racing.adapter.ApplicationType.CONSOLE;
 import static org.assertj.core.api.Assertions.assertThat;
 import io.github.shirohoo.racing.adapter.console.in.ConsoleInput;
 import io.github.shirohoo.racing.adapter.console.out.ConsoleOutput;
 import org.junit.jupiter.api.Test;
 
-class IOFactoryTests {
+class ApplicationTypeTests {
     @Test
     void getInput() {
-        assertThat(IOFactory.getInput(ApplicationType.CONSOLE))
-            .isInstanceOf(ConsoleInput.class);
+        assertThat(CONSOLE.getInput()).isInstanceOf(ConsoleInput.class);
     }
 
     @Test
     void getOutput() {
-        assertThat(IOFactory.getOutput(ApplicationType.CONSOLE))
-            .isInstanceOf(ConsoleOutput.class);
+        assertThat(CONSOLE.getOutput()).isInstanceOf(ConsoleOutput.class);
     }
 }
