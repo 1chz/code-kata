@@ -21,15 +21,19 @@ public class ConsoleOutputAdapter {
             .append("실행 결과")
             .append(NEW_LINE);
 
-        for (List<Car> cars : racingGame.eachRound()) {
-            for (Car car : cars) {
-                String carName = car.name();
-                int currentPosition = car.currentPosition();
-                sb.append(String.format("%s : %s%s", carName, convertSymbol(currentPosition), NEW_LINE));
-            }
-            sb.append(NEW_LINE);
-        }
+        racingGame.eachRound()
+            .forEach(cars -> buildRoundMessage(sb, cars));
+
         print(sb.toString());
+    }
+
+    private void buildRoundMessage(StringBuilder sb, List<Car> cars) {
+        for (Car car : cars) {
+            String carName = car.name();
+            int currentPosition = car.currentPosition();
+            sb.append(String.format("%s : %s%s", carName, convertSymbol(currentPosition), NEW_LINE));
+        }
+        sb.append(NEW_LINE);
     }
 
     private String convertSymbol(int currentPosition) {
