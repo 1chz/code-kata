@@ -1,4 +1,4 @@
-package io.github.shirohoo.racing.domain;
+package io.github.shirohoo.racing.app.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
-class RacingGameSettingsTests {
+class RacingGameRunnerSettingsTests {
     @Test
     void createSettings() {
         String carNames = "shiro,siro";

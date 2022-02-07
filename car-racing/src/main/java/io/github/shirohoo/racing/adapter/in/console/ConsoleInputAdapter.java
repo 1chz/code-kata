@@ -1,9 +1,8 @@
-package io.github.shirohoo.racing.adapter.in;
+package io.github.shirohoo.racing.adapter.in.console;
 
-import io.github.shirohoo.racing.port.in.Input;
 import java.util.Scanner;
 
-public class ConsoleInput implements Input {
+public class ConsoleInputAdapter {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public String carNames() {

@@ -1,4 +1,4 @@
-package io.github.shirohoo.racing.domain;
+package io.github.shirohoo.racing.app.domain;
 
 import static java.util.Arrays.stream;
 import java.util.ArrayList;
