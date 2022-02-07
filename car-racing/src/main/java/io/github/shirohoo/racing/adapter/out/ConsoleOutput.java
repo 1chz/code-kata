@@ -1,4 +1,4 @@
-package io.github.shirohoo.racing.adapter.console.out;
+package io.github.shirohoo.racing.adapter.out;
 
 import static java.util.stream.Collectors.joining;
 import io.github.shirohoo.racing.domain.Car;
