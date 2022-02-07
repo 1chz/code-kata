@@ -1,7 +1,7 @@
 package io.github.shirohoo.racing.adapter;
 
-import io.github.shirohoo.racing.adapter.console.in.ConsoleInput;
-import io.github.shirohoo.racing.adapter.console.out.ConsoleOutput;
+import io.github.shirohoo.racing.adapter.in.ConsoleInput;
+import io.github.shirohoo.racing.adapter.out.ConsoleOutput;
 import io.github.shirohoo.racing.port.in.Input;
 import io.github.shirohoo.racing.port.out.Output;
 import java.util.function.Supplier;

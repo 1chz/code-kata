@@ -2,8 +2,8 @@ package io.github.shirohoo.racing.adapter;
 
 import static io.github.shirohoo.racing.adapter.ApplicationType.CONSOLE;
 import static org.assertj.core.api.Assertions.assertThat;
-import io.github.shirohoo.racing.adapter.console.in.ConsoleInput;
-import io.github.shirohoo.racing.adapter.console.out.ConsoleOutput;
+import io.github.shirohoo.racing.adapter.in.ConsoleInput;
+import io.github.shirohoo.racing.adapter.out.ConsoleOutput;
 import org.junit.jupiter.api.Test;
 
 class ApplicationTypeTests {
