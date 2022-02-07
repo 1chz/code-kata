@@ -29,11 +29,11 @@ public class Cars {
 
     public List<Car> winners() {
         return cars.stream()
-            .filter(car -> car.currentPosition() == getMaxPosition())
+            .filter(car -> car.currentPosition() == maxPosition())
             .toList();
     }
 
-    private int getMaxPosition() {
+    private int maxPosition() {
         return cars.stream()
             .mapToInt(Car::currentPosition)
             .reduce(Integer.MIN_VALUE, Integer::max);
