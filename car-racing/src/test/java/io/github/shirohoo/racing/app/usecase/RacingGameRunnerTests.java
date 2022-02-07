@@ -1,26 +1,28 @@
-package io.github.shirohoo.racing.domain;
+package io.github.shirohoo.racing.app.usecase;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import io.github.shirohoo.racing.app.domain.Car;
+import io.github.shirohoo.racing.app.domain.RacingGameSettings;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class RacingGameTests {
+class RacingGameRunnerTests {
     @Test
     void createRacingGame() {
         RacingGameSettings settings = RacingGameSettings.of("siro", 3, () -> true);
 
         assertThatCode(() -> {
-            RacingGame.from(settings);
+            RacingGameRunner.from(settings);
         }).doesNotThrowAnyException();
     }
 
     @Test
     void createRacingGameExceptionIfSettingsNull() {
         assertThatThrownBy(() -> {
-            RacingGame.from(null);
+            RacingGameRunner.from(null);
         }).isInstanceOf(NullPointerException.class);
     }
 
@@ -28,10 +30,10 @@ class RacingGameTests {
     void eachRound() {
         // ...given
         RacingGameSettings settings = RacingGameSettings.of("siro", 3, () -> true);
-        RacingGame racingGame = RacingGame.from(settings);
+        RacingGameRunner racingGameRunner = RacingGameRunner.from(settings);
 
         // ...when
-        List<List<Car>> eachRound = racingGame.eachRound();
+        List<List<Car>> eachRound = racingGameRunner.eachRound();
 
         // ...then
         assertThat(eachRound)
@@ -44,10 +46,10 @@ class RacingGameTests {
     void winners() {
         // ...given
         RacingGameSettings settings = RacingGameSettings.of("siro", 3, () -> true);
-        RacingGame racingGame = RacingGame.from(settings);
+        RacingGameRunner racingGameRunner = RacingGameRunner.from(settings);
 
         // ...when
-        List<Car> winners = racingGame.winners();
+        List<Car> winners = racingGameRunner.winners();
 
         // ...then
         assertThat(winners)

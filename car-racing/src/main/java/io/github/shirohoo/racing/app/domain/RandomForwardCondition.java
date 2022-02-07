@@ -1,4 +1,4 @@
-package io.github.shirohoo.racing.domain;
+package io.github.shirohoo.racing.app.domain;
 
 import java.util.random.RandomGenerator;
 
