@@ -2,6 +2,7 @@ package io.github.shirohoo;
 
 import io.github.shirohoo.baseball.adapter.in.console.ConsoleInput;
 import io.github.shirohoo.baseball.adapter.out.console.ConsoleOutput;
+import io.github.shirohoo.baseball.app.port.in.Try;
 import io.github.shirohoo.baseball.app.port.out.TryResult;
 import io.github.shirohoo.baseball.app.usecase.UserTry;
 
@@ -11,33 +12,25 @@ public class ConsoleBaseBallApp {
     }
 
     private static class Runner {
-        private final UserTry game;
-        private final ConsoleInput input;
-        private final ConsoleOutput output;
-
-        private Runner() {
-            this.game = UserTry.create();
-            this.input = new ConsoleInput();
-            this.output = new ConsoleOutput();
-        }
-
         private static Runner init() {
             return new Runner();
         }
 
         private void run() {
-            TryResult trys;
+            ConsoleInput input = new ConsoleInput();
+            ConsoleOutput output = new ConsoleOutput();
+
+            Try trys = UserTry.create();
+
+            TryResult result;
             do {
                 output.enterNumberMessage();
-                trys = game.trys(input.trys());
-                output.resultMessage(trys);
-            } while (!trys.isStrikeOut());
-            output.restartMessage();
-            restart(input.restartIntentions());
-        }
+                result = trys.action(input.trys());
+                output.resultMessage(result);
+            } while (!result.isStrikeOut());
 
-        private void restart(boolean restart) {
-            if (restart) {
+            output.restartMessage();
+            if (input.restartIntentions()) {
                 run();
             }
             System.exit(0);

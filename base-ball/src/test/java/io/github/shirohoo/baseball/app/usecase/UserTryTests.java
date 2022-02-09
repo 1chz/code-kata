@@ -19,15 +19,15 @@ class UserTryTests {
 
     @MethodSource
     @ParameterizedTest
-    void trys(TryCommand userCommand, TryResult expected) {
-        UserTry game = UserTry.from(TryCommand.from("123"));
+    void action(TryCommand userCommand, TryResult expected) {
+        UserTry trys = UserTry.from(TryCommand.from("123"));
 
-        TryResult tryResult = game.trys(userCommand);
+        TryResult tryResult = trys.action(userCommand);
 
         assertThat(tryResult).isEqualTo(expected);
     }
 
-    static Stream<Arguments> trys() {
+    static Stream<Arguments> action() {
         return Stream.of(
             Arguments.of(TryCommand.from("123"), TryResult.of(0, 3)),
             Arguments.of(TryCommand.from("124"), TryResult.of(0, 2)),

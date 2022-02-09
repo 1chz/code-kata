@@ -1,11 +1,10 @@
 package io.github.shirohoo.baseball.app.usecase;
 
 import io.github.shirohoo.baseball.app.domain.Numbers;
-import io.github.shirohoo.baseball.app.port.in.Try;
 import io.github.shirohoo.baseball.app.port.in.TryCommand;
 import io.github.shirohoo.baseball.app.port.out.TryResult;
 
-public class UserTry implements Try {
+public class UserTry implements io.github.shirohoo.baseball.app.port.in.Try {
     private final Numbers randomNumber;
 
     private UserTry(Numbers randomNumber) {
@@ -21,7 +20,7 @@ public class UserTry implements Try {
     }
 
     @Override
-    public TryResult trys(TryCommand command) {
+    public TryResult action(TryCommand command) {
         return randomNumber.match(Numbers.from(command));
     }
 }

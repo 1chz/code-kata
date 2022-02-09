@@ -29,10 +29,6 @@ public class Numbers {
     }
 
     public TryResult match(Numbers userNumber) {
-        return computed(userNumber);
-    }
-
-    private TryResult computed(Numbers userNumber) {
         int ballCount = 0;
         int strikeCount = 0;
         for (int i = 0; i < length(); i++) {

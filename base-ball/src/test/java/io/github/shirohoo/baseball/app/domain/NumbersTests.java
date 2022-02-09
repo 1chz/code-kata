@@ -42,10 +42,10 @@ class NumbersTests {
     @MethodSource
     @ParameterizedTest
     void match(TryCommand userCommand, TryResult expected) {
-        Numbers computersNumber = Numbers.from(TryCommand.from("123"));
+        Numbers computerNumber = Numbers.from(TryCommand.from("123"));
         Numbers userNumber = Numbers.from(userCommand);
 
-        TryResult tryResult = computersNumber.match(userNumber);
+        TryResult tryResult = computerNumber.match(userNumber);
 
         assertThat(tryResult).isEqualTo(expected);
     }
