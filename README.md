@@ -1,10 +1,10 @@
 # 코드카타(Code Kata)
 
 ![Java_17](https://img.shields.io/badge/java-8~17-red?logo=java)
-[![GitHub license](https://img.shields.io/github/license/shirohoo/clean-code-kata)](https://github.com/shirohoo/book-object)
-[![GitHub stars](https://img.shields.io/github/stars/shirohoo/clean-code-kata)](https://github.com/shirohoo/book-object/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/shirohoo/clean-code-kata)](https://github.com/shirohoo/book-object/issues)
-[![GitHub forks](https://img.shields.io/github/forks/shirohoo/clean-code-kata)](https://github.com/shirohoo/book-object/network)
+[![GitHub license](https://img.shields.io/github/license/shirohoo/clean-code-kata)](https://github.com/shirohoo/clean-code-kata)
+[![GitHub stars](https://img.shields.io/github/stars/shirohoo/clean-code-kata)](https://github.com/shirohoo/clean-code-kata/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/shirohoo/clean-code-kata)](https://github.com/shirohoo/clean-code-kata/issues)
+[![GitHub forks](https://img.shields.io/github/forks/shirohoo/clean-code-kata)](https://github.com/shirohoo/clean-code-kata/network)
 
 - [📜 CodeKata - Because experience is the only teacher](http://codekata.com/)
 
