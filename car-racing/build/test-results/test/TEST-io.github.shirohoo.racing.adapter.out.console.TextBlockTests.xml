@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.github.shirohoo.racing.adapter.out.console.TextBlockTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-08T02:02:12" hostname="LT-IT-DEV-07" time="0.021">
+  <properties/>
+  <testcase name="name()" classname="io.github.shirohoo.racing.adapter.out.console.TextBlockTests" time="0.021"/>
+  <system-out><![CDATA[걸린 시간 : 0.0초
+걸린 시간 : 0.0초
+걸린 시간 : 0.001초
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
