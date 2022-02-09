@@ -1,7 +1,7 @@
 # 숫자야구게임 구현
 
 ![Java_17](https://img.shields.io/badge/java-17-red?logo=java)
-[![GitHub license](https://img.shields.io/github/license/shirohoo/clean-code-kata/base-ball)](https://github.com/shirohoo/book-object)
+[![GitHub license](https://img.shields.io/github/license/shirohoo/clean-code-kata)](https://github.com/shirohoo/book-object)
 [![GitHub stars](https://img.shields.io/github/stars/shirohoo/clean-code-kata)](https://github.com/shirohoo/book-object/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/shirohoo/clean-code-kata)](https://github.com/shirohoo/book-object/issues)
 [![GitHub forks](https://img.shields.io/github/forks/shirohoo/clean-code-kata)](https://github.com/shirohoo/book-object/network)
