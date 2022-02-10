@@ -6,7 +6,7 @@ public record DecisionResult(int ballCount, int strikeCount) {
     }
 
     public boolean isStrikeOut() {
-        return false;
+        return strikeCount == 3;
     }
 }
 
