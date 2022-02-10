@@ -30,7 +30,7 @@ public class ConsoleOutput {
                 result.strikeCount(), STRIKE_MESSAGE
             ));
         }
-        if (result.strikeCount() == 3) {
+        if (result.isStrikeOut()) {
             println(COMPLETE_MESSAGE);
         }
     }
