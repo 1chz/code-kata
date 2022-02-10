@@ -5,10 +5,9 @@ import org.junit.jupiter.api.Test;
 
 class NumbersTests {
     @Test
-    void create() {
-        NumbersGenerativeStrategy randomStrategy = new RandomNumbersGenerativeStrategy();
+    void from() {
         assertThatCode(() -> {
-            Numbers randomNumbers = Numbers.from(randomStrategy);
+            Numbers randomNumbers = Numbers.from(() -> "123");
         }).doesNotThrowAnyException();
     }
 }
