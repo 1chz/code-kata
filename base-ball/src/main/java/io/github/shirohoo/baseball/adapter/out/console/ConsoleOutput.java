@@ -1,6 +1,6 @@
 package io.github.shirohoo.baseball.adapter.out.console;
 
-import io.github.shirohoo.baseball.app.port.out.TryResult;
+import io.github.shirohoo.baseball.app.domain.DecisionResult;
 
 public class ConsoleOutput {
     private static final String ENTER_NUMBER_MESSAGE = "숫자를 입력해 주세요 : ";
@@ -14,23 +14,23 @@ public class ConsoleOutput {
         print(ENTER_NUMBER_MESSAGE);
     }
 
-    public void resultMessage(TryResult tryResult) {
-        if (tryResult.ballCount() == 0 && tryResult.strikeCount() == 0) {
+    public void resultMessage(DecisionResult result) {
+        if (result.ballCount() == 0 && result.strikeCount() == 0) {
             println(NOTHING_MESSAGE);
         }
-        if (tryResult.ballCount() > 0 && tryResult.strikeCount() == 0) {
-            println(tryResult.ballCount() + BALL_MESSAGE);
+        if (result.ballCount() > 0 && result.strikeCount() == 0) {
+            println(result.ballCount() + BALL_MESSAGE);
         }
-        if (tryResult.ballCount() == 0 && tryResult.strikeCount() > 0) {
-            println(tryResult.strikeCount() + STRIKE_MESSAGE);
+        if (result.ballCount() == 0 && result.strikeCount() > 0) {
+            println(result.strikeCount() + STRIKE_MESSAGE);
         }
-        if (tryResult.ballCount() > 0 && tryResult.strikeCount() > 0) {
+        if (result.ballCount() > 0 && result.strikeCount() > 0) {
             println(String.format("%s%s %s%s",
-                tryResult.ballCount(), BALL_MESSAGE,
-                tryResult.strikeCount(), STRIKE_MESSAGE
+                result.ballCount(), BALL_MESSAGE,
+                result.strikeCount(), STRIKE_MESSAGE
             ));
         }
-        if (tryResult.strikeCount() == 3) {
+        if (result.strikeCount() == 3) {
             println(COMPLETE_MESSAGE);
         }
     }

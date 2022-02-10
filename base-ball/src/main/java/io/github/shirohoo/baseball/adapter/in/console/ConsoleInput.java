@@ -1,6 +1,6 @@
 package io.github.shirohoo.baseball.adapter.in.console;
 
-import io.github.shirohoo.baseball.app.port.in.TryCommand;
+import io.github.shirohoo.baseball.app.port.in.UserInput;
 import java.util.Scanner;
 
 public class ConsoleInput {
@@ -10,8 +10,8 @@ public class ConsoleInput {
         this.scanner = new Scanner(System.in);
     }
 
-    public TryCommand trys() {
-        return TryCommand.from(scanner.nextLine());
+    public UserInput trys() {
+        return UserInput.nonOverlapping3digits(scanner.nextLine());
     }
 
     public boolean restartIntentions() {
@@ -22,6 +22,6 @@ public class ConsoleInput {
         if (intentions == 2) {
             return false;
         }
-        throw new IllegalArgumentException(String.format("'%s' is unknown input.", intentions));
+        throw new IllegalArgumentException(String.format("'%s' is unknown.", intentions));
     }
 }
