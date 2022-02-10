@@ -28,7 +28,7 @@ public class ConsoleBaseBallApp {
                 output.enterNumberMessage();
                 result = game.action(input.trys());
                 output.resultMessage(result);
-            } while (result.strikeCount() != 3);
+            } while (!result.isStrikeOut());
 
             output.restartMessage();
             if (input.restartIntentions()) {
