@@ -16,7 +16,7 @@ public class BaseBallImpl implements BaseBall {
         this.computerNumbers = computerNumbers;
     }
 
-    public static BaseBall create(Referee referee, NumbersGenerativeStrategy strategy) {
+    public static BaseBall of(Referee referee, NumbersGenerativeStrategy strategy) {
         return new BaseBallImpl(referee, Numbers.from(strategy));
     }
 
