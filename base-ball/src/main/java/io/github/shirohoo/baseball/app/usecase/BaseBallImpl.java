@@ -5,6 +5,7 @@ import io.github.shirohoo.baseball.app.domain.Numbers;
 import io.github.shirohoo.baseball.app.domain.NumbersGenerativeStrategy;
 import io.github.shirohoo.baseball.app.domain.Referee;
 import io.github.shirohoo.baseball.app.port.in.BaseBall;
+import io.github.shirohoo.baseball.app.port.in.UserInput;
 
 public class BaseBallImpl implements BaseBall {
     private final Referee referee;
@@ -16,11 +17,11 @@ public class BaseBallImpl implements BaseBall {
     }
 
     public static BaseBall create(Referee referee, NumbersGenerativeStrategy strategy) {
-        return new BaseBallImpl(referee, Numbers.create(strategy));
+        return new BaseBallImpl(referee, Numbers.from(strategy));
     }
 
     @Override
-    public DecisionResult action(String input) {
-        return referee.decision(computerNumbers, Numbers.nonOverlapping3digits(input));
+    public DecisionResult action(UserInput input) {
+        return referee.decision(computerNumbers, input.createNumbers());
     }
 }
