@@ -15,23 +15,26 @@ public class ConsoleOutput {
     }
 
     public void resultMessage(DecisionResult result) {
-        if (result.ballCount() == 0 && result.strikeCount() == 0) {
+        if (result.isBallAndStrike()) {
+            println(result.ballCount() + BALL_MESSAGE + " " + result.strikeCount() + STRIKE_MESSAGE);
+            return;
+        }
+
+        if (result.isNothing()) {
             println(NOTHING_MESSAGE);
+            return;
         }
-        if (result.ballCount() > 0 && result.strikeCount() == 0) {
+
+        if (result.isOnlyBall()) {
             println(result.ballCount() + BALL_MESSAGE);
+            return;
         }
-        if (result.ballCount() == 0 && result.strikeCount() > 0) {
+
+        if (result.isOnlyStrike()) {
             println(result.strikeCount() + STRIKE_MESSAGE);
-        }
-        if (result.ballCount() > 0 && result.strikeCount() > 0) {
-            println(String.format("%s%s %s%s",
-                result.ballCount(), BALL_MESSAGE,
-                result.strikeCount(), STRIKE_MESSAGE
-            ));
-        }
-        if (result.isStrikeOut()) {
-            println(COMPLETE_MESSAGE);
+            if (result.isStrikeOut()) {
+                println(COMPLETE_MESSAGE);
+            }
         }
     }
 
