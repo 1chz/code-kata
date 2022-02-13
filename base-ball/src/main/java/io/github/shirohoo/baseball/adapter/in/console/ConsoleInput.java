@@ -22,6 +22,6 @@ public class ConsoleInput {
         if (intentions == 2) {
             return false;
         }
-        throw new IllegalArgumentException(String.format("'%s' is unknown.", intentions));
+        throw new IllegalArgumentException("'%s' is unknown.".formatted(intentions));
     }
 }
