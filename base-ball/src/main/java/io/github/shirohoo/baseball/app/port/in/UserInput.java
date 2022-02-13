@@ -1,7 +1,8 @@
 package io.github.shirohoo.baseball.app.port.in;
 
-import static java.util.Arrays.stream;
 import io.github.shirohoo.baseball.app.domain.Numbers;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class UserInput {
     private final String userInput;
@@ -15,16 +16,20 @@ public class UserInput {
             throw new IllegalArgumentException("'userInput' must not be contain '0'");
         }
 
-        long count = stream(input.split("")).distinct().count();
+        long count = stream(input).distinct().count();
         if (count != 3) {
             throw new IllegalArgumentException("'userInput' must be three non-overlapping numbers");
         }
 
-        int sum = stream(input.split("")).mapToInt(Integer::valueOf).sum();
+        int sum = stream(input).mapToInt(Integer::valueOf).sum();
         if (sum < 6 || sum > 24) {
             throw new IllegalArgumentException("sum of 'userInput' must be 6 <= x <= 24");
         }
         this.userInput = input;
+    }
+
+    private Stream<String> stream(String input) {
+        return Arrays.stream(input.split(""));
     }
 
     public static UserInput nonOverlapping3digits(String input) {
@@ -34,4 +39,5 @@ public class UserInput {
     public Numbers createNumbers() {
         return Numbers.from(userInput);
     }
+
 }
