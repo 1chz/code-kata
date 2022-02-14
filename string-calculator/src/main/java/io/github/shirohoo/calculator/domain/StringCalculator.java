@@ -65,7 +65,8 @@ public class StringCalculator {
         MULTIPLICATION("*", (x, y) -> x * y),
         DIVISION("/", (x, y) -> x / y);
 
-        private static final Map<String, ArithmeticCalculator> MAP = stream(values()).collect(toMap(calculator -> calculator.operator, identity()));
+        private static final Map<String, ArithmeticCalculator> MAP = stream(values())
+            .collect(toMap(ArithmeticCalculator::operator, identity()));
 
         private final String operator;
         private final DoubleBinaryOperator function;
@@ -91,6 +92,10 @@ public class StringCalculator {
 
         private boolean isDivideByZero(double right) {
             return this == DIVISION && right == 0;
+        }
+
+        private String operator() {
+            return operator;
         }
     }
 }
