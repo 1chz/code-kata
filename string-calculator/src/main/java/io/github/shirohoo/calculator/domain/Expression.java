@@ -21,4 +21,15 @@ public class Expression {
     public String[] split() {
         return expr.split(" ");
     }
+
+    public boolean isSplit() {
+        return expr.length() > 1;
+    }
+
+    public double export() {
+        if (!isSplit()) {
+            return Double.parseDouble(split()[0]);
+        }
+        throw new IllegalStateException("Current expression is not a single number");
+    }
 }
