@@ -1,21 +1,21 @@
 package io.github.shirohoo.calculator.domain;
 
 import static java.util.Arrays.stream;
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.toMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Stack;
 import java.util.function.DoubleBinaryOperator;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class StringCalculator {
-    private final Expression expression;
     private final Stack<String> accumulator;
+    private final Expression expression;
 
     private StringCalculator(Expression expression) {
-        this.expression = Objects.requireNonNull(expression);
         this.accumulator = new Stack<>();
+        this.expression = Objects.requireNonNull(expression);
     }
 
     public static StringCalculator from(Expression expression) {
@@ -23,33 +23,26 @@ public class StringCalculator {
     }
 
     public double calculate() {
-        String[] split = expression.split();
-        if (split.length == 1) {
-            return Double.parseDouble(split[0]);
+        if (!expression.isSplit()) {
+            return expression.export();
         }
 
         accumulator.clear();
-        for (String expr : split) {
+        for (String expr : expression.split()) {
             accumulateIfEqualSize3();
             pushIfLessThanSize3(expr);
         }
 
-        return Double.parseDouble(calculate(accumulator));
+        return Double.parseDouble(accumulate());
     }
 
     private void accumulateIfEqualSize3() {
         if (accumulator.size() == 3) {
-            calculate(accumulator);
+            accumulate();
         }
     }
 
-    private void pushIfLessThanSize3(String expr) {
-        if (accumulator.size() < 3) {
-            accumulator.push(expr);
-        }
-    }
-
-    private String calculate(Stack<String> accumulator) {
+    private String accumulate() {
         double right = Double.parseDouble(accumulator.pop());
         String operator = accumulator.pop();
         double left = Double.parseDouble(accumulator.pop());
@@ -60,14 +53,19 @@ public class StringCalculator {
         );
     }
 
+    private void pushIfLessThanSize3(String expr) {
+        if (accumulator.size() < 3) {
+            accumulator.push(expr);
+        }
+    }
+
     private enum ArithmeticCalculator {
         ADDITION("+", (x, y) -> x + y),
         SUBTRACTION("-", (x, y) -> x - y),
         MULTIPLICATION("*", (x, y) -> x * y),
         DIVISION("/", (x, y) -> x / y);
 
-        private static final Map<String, ArithmeticCalculator> MAP =
-            stream(values()).collect(Collectors.toMap(calculator -> calculator.operator, Function.identity()));
+        private static final Map<String, ArithmeticCalculator> MAP = stream(values()).collect(toMap(calculator -> calculator.operator, identity()));
 
         private final String operator;
         private final DoubleBinaryOperator function;
