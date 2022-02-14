@@ -35,4 +35,25 @@ class ExpressionTests {
         // ...then
         assertThat(expression.split()).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("수식이 단순 숫자 한개일 경우 분리할 수 없음을 알려준다")
+    void isSplit() {
+        Expression expression = Expression.from("1");
+        assertThat(expression.isSplit()).isFalse();
+    }
+
+    @Test
+    @DisplayName("수식이 단순 숫자 한개일 경우 수식을 바로 반환 할 수 있다")
+    void export() {
+        Expression expression = Expression.from("1");
+        assertThat(expression.export()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("수식이 단순 숫자 한개일 경우 수식을 바로 반환 할 수 있다")
+    void exportException() {
+        Expression expression = Expression.from("1 + 2");
+        assertThatThrownBy(expression::export).isInstanceOf(IllegalStateException.class);
+    }
 }
