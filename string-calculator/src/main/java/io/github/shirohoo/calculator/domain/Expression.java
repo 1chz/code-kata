@@ -17,4 +17,8 @@ public class Expression {
     public static Expression from(String expr) {
         return new Expression(expr);
     }
+
+    public String[] split() {
+        return expr.split(" ");
+    }
 }
