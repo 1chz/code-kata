@@ -1,8 +1,7 @@
-package io.github.shirohoo.calculator.domain;
+package io.github.shirohoo.calculator.app.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import io.github.shirohoo.calculator.app.domain.Expression;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
