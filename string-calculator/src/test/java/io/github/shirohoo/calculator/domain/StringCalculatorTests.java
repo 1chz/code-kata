@@ -3,6 +3,8 @@ package io.github.shirohoo.calculator.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import io.github.shirohoo.calculator.app.domain.Expression;
+import io.github.shirohoo.calculator.app.domain.StringCalculator;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
