@@ -1,4 +1,4 @@
-package io.github.shirohoo.calculator.domain;
+package io.github.shirohoo.calculator.app.domain;
 
 import static java.util.Arrays.stream;
 import static java.util.function.Function.identity;
