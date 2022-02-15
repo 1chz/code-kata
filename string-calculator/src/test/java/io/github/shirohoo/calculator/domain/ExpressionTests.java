@@ -52,7 +52,7 @@ class ExpressionTests {
     }
 
     @Test
-    @DisplayName("수식이 단순 숫자 한개일 경우 수식을 바로 반환 할 수 있다")
+    @DisplayName("수식이 단순 숫자 한개일 경우 수식을 바로 반환 할 수 없다")
     void exportException() {
         Expression expression = Expression.from("1 + 2");
         assertThatThrownBy(expression::export).isInstanceOf(IllegalStateException.class);
