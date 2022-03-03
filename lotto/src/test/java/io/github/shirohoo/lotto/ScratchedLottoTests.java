@@ -11,7 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 class ScratchedLottoTests {
     @Test
     void shouldThrownIllegalStateExceptionWhenScratch(@ValidNumbers Set<Integer> numbers) {
-        ScratchedLotto scratchedLotto = ScratchedLotto.from(6, numbers);
+        ScratchedLotto scratchedLotto = ScratchedLotto.of(6, numbers);
 
         assertThatThrownBy(() -> {
             scratchedLotto.scratch(null);
