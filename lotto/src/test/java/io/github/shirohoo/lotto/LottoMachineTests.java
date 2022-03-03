@@ -6,17 +6,17 @@ import java.util.Set;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-class TicketMachineTests {
+class LottoMachineTests {
     @Test
     void init() {
-        assertThatCode(TicketMachine::new)
+        assertThatCode(LottoMachine::new)
             .doesNotThrowAnyException();
     }
 
     @RepeatedTest(100)
     void ticketing() {
         // ...given
-        TicketMachine machine = new TicketMachine();
+        LottoMachine machine = new LottoMachine();
 
         // ...when
         Set<Integer> numbers = machine.ticketing();

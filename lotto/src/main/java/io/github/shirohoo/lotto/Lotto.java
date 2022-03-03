@@ -3,6 +3,8 @@ package io.github.shirohoo.lotto;
 import java.util.Set;
 
 public abstract class Lotto {
+    public final static int LOTTO_PRICE = 1_000;
+
     protected final Set<Integer> numbers;
 
     protected Lotto(Set<Integer> numbers) {

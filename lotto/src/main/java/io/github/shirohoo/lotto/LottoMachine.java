@@ -1,13 +1,14 @@
 package io.github.shirohoo.lotto;
 
+import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
 
-public class TicketMachine {
+public class LottoMachine {
     private static final List<Integer> NUMBERS = IntStream.rangeClosed(1, 45)
         .boxed()
         .collect(toList());
@@ -16,6 +17,7 @@ public class TicketMachine {
         Collections.shuffle(NUMBERS);
         return NUMBERS.stream()
             .limit(6)
-            .collect(toSet());
+            .sorted()
+            .collect(toCollection(LinkedHashSet::new));
     }
 }

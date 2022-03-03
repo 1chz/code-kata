@@ -30,4 +30,9 @@ public final class NotScratchedLotto extends Lotto {
     protected int getMatchCount() {
         throw new IllegalStateException("Not scratched yet");
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
