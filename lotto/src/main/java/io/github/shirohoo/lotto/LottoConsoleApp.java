@@ -1,31 +1,30 @@
 package io.github.shirohoo.lotto;
 
-import java.util.List;
-import java.util.Map;
+import io.github.shirohoo.lotto.adapter.in.console.ConsoleInput;
+import io.github.shirohoo.lotto.adapter.out.console.ConsoleOutput;
+import io.github.shirohoo.lotto.app.domain.Lotto;
+import io.github.shirohoo.lotto.app.domain.LottoMachine;
+import io.github.shirohoo.lotto.app.domain.Lottos;
 
 public class LottoConsoleApp {
     public static void main(String[] args) {
         ConsoleInput input = new ConsoleInput();
         ConsoleOutput output = new ConsoleOutput();
+        LottoMachine lottoMachine = new LottoMachine();
 
-        output.purchaseAmountMessage();
-        int purchaseAmount = input.enterPurchaseAmount();
+        output.printEnterPurchaseAmountMessage();
+        long purchaseAmount = input.enterPurchaseAmount();
 
-        output.numbersOfPurchaseMessage(purchaseAmount);
-        BuyLottoPort buyLottoPort = new BuyLottoUseCase(new LottoMachine());
+        long purchaseOfNumber = purchaseAmount / Lotto.PRICE;
+        output.printPurchaseConfirmationMessage(purchaseOfNumber);
 
-        List<NotScratchedLotto> notScratchedLottos = buyLottoPort.buyLotto(purchaseAmount);
-        output.printLottos(notScratchedLottos);
+        Lottos lottos = lottoMachine.ticketing(purchaseOfNumber);
+        output.printLottoNumbers(lottos);
 
-        output.winningNumbersMessage();
-        WinnerLotto winnerLotto = WinnerLotto.from(input.enterWinningNumbers());
+        output.printEnterWinningNumbersMessage();
+        String winningNumbers = input.enterWinningNumbers();
 
-        ScratchPort scratchPort = new ScratchUseCase();
-        Map<Integer, List<MatchPrize>> scratched = scratchPort.scratch(winnerLotto, notScratchedLottos);
-
-        CheckResultPort checkResultPort = new CheckResultUseCase();
-        Result result = checkResultPort.check(scratched, purchaseAmount);
-
-        output.printResult(result);
+        Lotto winningLotto = lottoMachine.ticketing(winningNumbers);
+        output.printStatistics(lottos.drawn(winningLotto), purchaseAmount);
     }
 }
