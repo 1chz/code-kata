@@ -1,6 +1,6 @@
 # 코드카타(Code Kata)
 
-![Java_17](https://img.shields.io/badge/java-8~17-red?logo=java)
+![Java_17](https://img.shields.io/badge/java-17-red?logo=java)
 ![Kotlin_1.6](https://img.shields.io/badge/kotlin-1.6-purple?logo=kotlin)
 [![GitHub license](https://img.shields.io/github/license/shirohoo/clean-code-kata)](https://github.com/shirohoo/clean-code-kata)
 [![GitHub stars](https://img.shields.io/github/stars/shirohoo/clean-code-kata)](https://github.com/shirohoo/clean-code-kata/stargazers)

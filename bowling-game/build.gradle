@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'io.github.shirohoo'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
