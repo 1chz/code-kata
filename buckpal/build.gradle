@@ -7,8 +7,8 @@ plugins {
 group = 'io.github.shirohoo'
 
 compileJava {
-    sourceCompatibility = 11
-    targetCompatibility = 11
+    sourceCompatibility = 17
+    targetCompatibility = 17
 }
 
 configurations {
