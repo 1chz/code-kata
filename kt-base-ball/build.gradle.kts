@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.6.10"
+    application
 }
 
 group = "io.github.shirohoo"
@@ -12,11 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk17")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.3")
-    testImplementation("org.assertj:assertj-core:3.22.0")
+    testImplementation(kotlin("test"))
 }
 
 tasks.withType<KotlinCompile> {
