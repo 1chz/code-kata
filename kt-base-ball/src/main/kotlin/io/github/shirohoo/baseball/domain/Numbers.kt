@@ -5,7 +5,7 @@ data class Numbers private constructor(val values: String) {
         var ballCount = 0
         var strikeCount = 0
 
-        (1..3).forEach {
+        (0..2).forEach {
             when {
                 values[it] == other.values[it] -> strikeCount++
                 values[it] in other.values -> ballCount++
@@ -20,7 +20,7 @@ data class Numbers private constructor(val values: String) {
             val charSet = values.toSet()
             return when (charSet.size) {
                 3 -> Numbers(values)
-                else -> throw IllegalStateException("Numbers's values must be three non-overlapping numbers 1 through 9")
+                else -> throw IllegalStateException("'Numbers' must be three non-overlapping numbers 1 through 9")
             }
         }
     }
