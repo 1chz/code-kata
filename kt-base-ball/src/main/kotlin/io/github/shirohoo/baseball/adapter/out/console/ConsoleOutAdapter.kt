@@ -3,15 +3,15 @@ package io.github.shirohoo.baseball.adapter.out.console
 import io.github.shirohoo.baseball.domain.MatchCounts
 
 class ConsoleOutAdapter {
-    fun printInputGuide() {
+    fun inputGuide() {
         print("숫자를 입력해 주세요 : ")
     }
 
-    fun printToConsole(matchCounts: MatchCounts) {
+    fun printFor(matchCounts: MatchCounts) {
         println(getMessage(matchCounts))
     }
 
-    fun printComplete() {
+    fun completeMessage() {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     }
 

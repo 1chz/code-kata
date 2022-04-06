@@ -19,12 +19,14 @@ class MatchCountsTests {
         fun testCases(): Stream<Arguments> = Stream.of(
             of(MatchCounts(0, 3), true),
             of(MatchCounts(0, 2), false),
+            of(MatchCounts(1, 2), false),
             of(MatchCounts(0, 1), false),
             of(MatchCounts(1, 1), false),
             of(MatchCounts(2, 1), false),
+            of(MatchCounts(0, 0), false),
             of(MatchCounts(1, 0), false),
             of(MatchCounts(2, 0), false),
-            of(MatchCounts(0, 0), false)
+            of(MatchCounts(3, 0), false)
         )
     }
 }
