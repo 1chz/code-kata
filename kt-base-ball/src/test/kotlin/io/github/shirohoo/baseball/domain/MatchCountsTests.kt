@@ -3,6 +3,7 @@ package io.github.shirohoo.baseball.domain
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.Arguments.of
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
@@ -16,14 +17,14 @@ class MatchCountsTests {
     companion object {
         @JvmStatic
         fun testCases(): Stream<Arguments> = Stream.of(
-            Arguments.of(MatchCounts(0, 3), true),
-            Arguments.of(MatchCounts(0, 2), false),
-            Arguments.of(MatchCounts(0, 1), false),
-            Arguments.of(MatchCounts(1, 1), false),
-            Arguments.of(MatchCounts(2, 1), false),
-            Arguments.of(MatchCounts(1, 0), false),
-            Arguments.of(MatchCounts(2, 0), false),
-            Arguments.of(MatchCounts(0, 0), false)
+            of(MatchCounts(0, 3), true),
+            of(MatchCounts(0, 2), false),
+            of(MatchCounts(0, 1), false),
+            of(MatchCounts(1, 1), false),
+            of(MatchCounts(2, 1), false),
+            of(MatchCounts(1, 0), false),
+            of(MatchCounts(2, 0), false),
+            of(MatchCounts(0, 0), false)
         )
     }
 }
