@@ -1,11 +1,5 @@
 package io.github.shirohoo.baseball.domain
 
-object NumbersGenerator {
-    fun generate(): Numbers = Numbers(
-        generateSequence { (1..9).random() }
-            .distinct()
-            .take(3)
-            .map(Int::toString)
-            .joinToString(separator = "")
-    )
+interface NumbersGenerator {
+    fun generate(): Numbers
 }
