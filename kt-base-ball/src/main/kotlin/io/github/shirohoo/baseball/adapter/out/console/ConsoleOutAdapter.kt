@@ -15,8 +15,6 @@ class ConsoleOutAdapter {
         println("3개의 숫자를 모두 맞히셨습니다! 게임 종료")
     }
 
-    private fun print(message: String): Unit = print(message)
-    private fun println(message: String): Unit = println(message)
     private fun getMessage(matchCounts: MatchCounts): String = with(matchCounts) {
         when {
             (ballCount > 0) and (strikeCount > 0) -> "${ballCount}볼 ${strikeCount}스트라이크"
