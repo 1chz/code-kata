@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.Arguments.of
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class MatchCountsTests {
+internal class MatchCountsTests {
     @ParameterizedTest
     @MethodSource("testCases")
     fun `0볼 3스트라이크면 참을 반환한다`(matchCounts: MatchCounts, expected: Boolean) {
