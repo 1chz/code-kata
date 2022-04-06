@@ -4,15 +4,12 @@ data class Numbers private constructor(val values: String) {
     fun compare(other: Numbers): MatchCounts {
         var ballCount = 0
         var strikeCount = 0
-
-        (0..2).forEach {
+        return (0..2).forEach {
             when {
                 values[it] == other.values[it] -> strikeCount++
                 values[it] in other.values -> ballCount++
             }
-        }
-
-        return MatchCounts(ballCount, strikeCount)
+        }.let { MatchCounts(ballCount, strikeCount) }
     }
 
     companion object {
