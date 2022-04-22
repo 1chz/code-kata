@@ -26,6 +26,13 @@ public enum ArithmeticOperator {
     }
 
     public double apply(double left, double right) {
+        if (isZeroDivide(right)) {
+            throw new ArithmeticException("0으로는 나눌 수 없습니다");
+        }
         return f.applyAsDouble(left, right);
+    }
+
+    private boolean isZeroDivide(double right) {
+        return this == DIVIDE && right == 0;
     }
 }
