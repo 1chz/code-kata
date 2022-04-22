@@ -3,6 +3,7 @@ package io.github.shirohoo.calculator.app.domain;
 import java.util.Deque;
 import java.util.Queue;
 
+@SuppressWarnings("all") // will never happen
 public final class StringCalculator {
     public double calculate(StringExpression expr) {
         Deque<Double> operands = expr.getOperands();
