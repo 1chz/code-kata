@@ -15,10 +15,14 @@ public final class StringExpression {
     private final String expr;
 
     public StringExpression(String expr) {
+        validate(expr);
+        this.expr = expr.replace(" ", "");
+    }
+
+    private void validate(String expr) {
         if (expr == null || expr.isBlank() || isNonMatchesExprPattern(expr)) {
             throw new IllegalArgumentException("올바른 수식을 입력하세요");
         }
-        this.expr = expr.replace(" ", "");
     }
 
     private boolean isNonMatchesExprPattern(String expr) {
@@ -27,6 +31,7 @@ public final class StringExpression {
 
     public Queue<Character> getOperators() {
         String[] split = expr.replaceAll("\\d", "").split("");
+
         if (split.length == 0 || split.length == 1) {
             return new LinkedList<>();
         }
