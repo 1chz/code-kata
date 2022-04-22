@@ -26,7 +26,12 @@ public final class StringExpression {
     }
 
     public Queue<Character> getOperators() {
-        return stream(expr.replaceAll("\\d", "").split(""))
+        String[] split = expr.replaceAll("\\d", "").split("");
+        if (split.length == 0 || split.length == 1) {
+            return new LinkedList<>();
+        }
+
+        return stream(split)
                 .map(operator -> operator.charAt(0))
                 .collect(toCollection(LinkedList::new));
     }
