@@ -1,7 +1,5 @@
 package io.github.shirohoo.calculator.app.domain;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.regex.Pattern;
@@ -10,7 +8,7 @@ import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toCollection;
 
 public final class StringExpression {
-    private static final Pattern EXPR_PATTERN = Pattern.compile("^\\d+|\\d?\\s?[+\\-*/]\\s?\\d.*$");
+    private static final Pattern PATTERN = Pattern.compile("^\\d+( ?[+\\-*/] ?\\d+)*$");
 
     private final String expr;
 
@@ -26,7 +24,7 @@ public final class StringExpression {
     }
 
     private boolean isNonMatchesExprPattern(String expr) {
-        return !EXPR_PATTERN.matcher(expr).matches();
+        return !PATTERN.matcher(expr).matches();
     }
 
     public Queue<Character> getOperators() {
@@ -41,9 +39,9 @@ public final class StringExpression {
                 .collect(toCollection(LinkedList::new));
     }
 
-    public Deque<Double> getOperands() {
-        return new ArrayDeque<>(stream(expr.split("[+\\-*/]"))
+    public Queue<Double> getOperands() {
+        return stream(expr.split("\\D"))
                 .map(Double::parseDouble)
-                .toList());
+                .collect(toCollection(LinkedList::new));
     }
 }
