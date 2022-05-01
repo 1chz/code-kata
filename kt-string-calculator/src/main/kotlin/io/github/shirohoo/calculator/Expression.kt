@@ -1,6 +1,6 @@
 package io.github.shirohoo.calculator
 
-data class Expression private constructor(private val expr: String) {
+data class Expression private constructor(val expr: String) {
     companion object {
         private val pattern: Regex = "^\\d+(?: ?[+\\-*/] ?\\d+)*$".toRegex()
 
