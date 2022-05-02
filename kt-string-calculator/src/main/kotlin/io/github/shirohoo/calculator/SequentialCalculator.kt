@@ -19,7 +19,7 @@ class SequentialCalculator : Calculator {
     private fun getOperators(expr: Expression): Queue<Char> {
         return expr.expr
             .replace("[\\d\\s]".toRegex(), "")
-            .splitToSequence("")
+            .split("")
             .filter(String::isNotEmpty)
             .map(String::single)
             .toCollection(LinkedList())
@@ -27,7 +27,7 @@ class SequentialCalculator : Calculator {
 
     private fun getOperands(expr: Expression): Queue<Double> {
         return expr.expr
-            .splitToSequence("\\D".toRegex())
+            .split("\\D".toRegex())
             .filter(String::isNotEmpty)
             .map(String::toDouble)
             .toCollection(LinkedList())
