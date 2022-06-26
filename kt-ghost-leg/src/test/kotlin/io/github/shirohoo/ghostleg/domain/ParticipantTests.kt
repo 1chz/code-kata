@@ -1,6 +1,6 @@
 package io.github.shirohoo.ghostleg.domain
 
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class ParticipantTests {
@@ -29,7 +29,7 @@ class ParticipantTests {
         participant = participant.move(1, 0)
 
         // then
-        assertEquals(1, participant.point.x)
+        assertEquals(1, participant.x)
     }
 
     @Test
@@ -43,7 +43,7 @@ class ParticipantTests {
         participant = participant.move(-1, 0)
 
         // then
-        assertEquals(-1, participant.point.x)
+        assertEquals(-1, participant.x)
     }
 
     @Test
@@ -57,7 +57,7 @@ class ParticipantTests {
         participant = participant.move(0, 1)
 
         // then
-        assertEquals(1, participant.point.y)
+        assertEquals(1, participant.y)
     }
 
     @Test
@@ -71,6 +71,6 @@ class ParticipantTests {
         participant = participant.move(0, -1)
 
         // then
-        assertEquals(-1, participant.point.y)
+        assertEquals(-1, participant.y)
     }
 }
