@@ -14,8 +14,8 @@ class ParticipantTests {
         val participant = Participant(name, point)
 
         // then
-        assertEquals(participant.name, name)
-        assertEquals(participant.point, point)
+        assertEquals(name, participant.name)
+        assertEquals(point, participant.point)
     }
 
     @Test
