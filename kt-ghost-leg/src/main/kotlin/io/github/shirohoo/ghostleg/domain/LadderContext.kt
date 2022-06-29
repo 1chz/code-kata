@@ -2,11 +2,11 @@ package io.github.shirohoo.ghostleg.domain
 
 class LadderContext(val width: Int, val height: Int) {
     init {
-        require(width < MIN_WIDTH) {
+        require(width >= MIN_WIDTH) {
             "the ladder wide must be at least ${MIN_WIDTH}."
         }
 
-        require(height < MIN_HEIGHT) {
+        require(height >= MIN_HEIGHT) {
             "the ladder height must be at least ${MIN_HEIGHT}."
         }
     }

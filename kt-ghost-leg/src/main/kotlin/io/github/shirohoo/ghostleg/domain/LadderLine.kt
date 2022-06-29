@@ -2,18 +2,14 @@ package io.github.shirohoo.ghostleg.domain
 
 import kotlin.random.Random
 
-class LadderLine(width: Int) {
+class LadderLine(context: LadderContext) {
     private val ladderBlocks: List<LadderBlock>
 
     init {
-        require(width >= 2) {
-            "the ladder wide must be at least 2."
-        }
-
         ladderBlocks = mutableListOf<LadderBlock>()
             .apply {
                 createdFirst()
-                createMiddle(width)
+                createMiddle(context.width)
                 createLast()
             }.toList()
     }
