@@ -1,7 +1,8 @@
 package io.github.shirohoo.ghostleg.domain
 
 class LadderBlock private constructor(val direction: Direction) {
-    private val isEast get() = direction == Direction.EAST
+    private val isEast
+        get() = direction == Direction.EAST
 
     fun createNext(function: () -> Boolean): LadderBlock =
         if (isEast) LadderBlock(Direction.WEST)

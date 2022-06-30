@@ -13,6 +13,7 @@ data class Point(val x: Int = 0, val y: Int = 0) {
      * along the Y axis
      */
     fun move(dx: Int, dy: Int): Point = Point(x + dx, y + dy)
+
     fun move(direction: Direction): Point = when (direction) {
         Direction.EAST -> Point(x + 1, y)
         Direction.WEST -> Point(x - 1, y)

@@ -8,6 +8,6 @@ data class Name(val name: String) {
     }
 
     companion object {
-        val namePattern = Regex("^[a-zA-Z0-9가-힣]{1,5}$")
+        private val namePattern = Regex("^[a-zA-Z0-9가-힣]{1,5}$")
     }
 }
