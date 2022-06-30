@@ -34,4 +34,40 @@ class PointTests {
         val point = Point()
         assertEquals(Point(y = -1), point.move(0, -1))
     }
+
+    @Test
+    fun `동쪽을 입력받으면 x좌표를 1 증가 시킨다`() {
+        // given
+        var point = Point()
+
+        // when
+        point = point.move(Direction.EAST)
+
+        // then
+        assertEquals(1, point.x)
+    }
+
+    @Test
+    fun `서쪽을 입력받으면 x좌표를 1 감소 시킨다`() {
+        // given
+        var point = Point()
+
+        // when
+        point = point.move(Direction.WEST)
+
+        // then
+        assertEquals(-1, point.x)
+    }
+
+    @Test
+    fun `남쪽을 입력받으면 x좌표는 변하지 않는다`() {
+        // given
+        var point = Point()
+
+        // when
+        point = point.move(Direction.SOUTH)
+
+        // then
+        assertEquals(0, point.x)
+    }
 }
