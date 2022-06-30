@@ -8,4 +8,5 @@ data class Participant(val name: Name, val point: Point = Point()) {
     val y = point.y
 
     fun move(dx: Int, dy: Int): Participant = Participant(name, point.move(dx, dy))
+    fun move(direction: Direction): Participant = Participant(name, point.move(direction))
 }
