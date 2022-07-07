@@ -4,8 +4,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public final class HashFunction {
-    private static final char[] HEX_CHARS = "0123456789ABCDEF".toCharArray();
-    private static final String SHA_256 = "SHA-256";
+    private static final String ALGORITHM = "SHA-256";
+    private static final char[] HEX_CHARS = "0123456789abcdef".toCharArray();
 
     private HashFunction() {
     }
@@ -18,7 +18,7 @@ public final class HashFunction {
 
     private static MessageDigest getMessageDigest() {
         try {
-            return MessageDigest.getInstance(SHA_256);
+            return MessageDigest.getInstance(ALGORITHM);
         } catch (NoSuchAlgorithmException e) {
             // never happens
             throw new RuntimeException(e);
@@ -27,11 +27,11 @@ public final class HashFunction {
 
     private static String bytesToHex(byte[] bytes) {
         char[] hex = new char[bytes.length * 2];
-        for (int i = 0; i < bytes.length; i++) {
-            int x = bytes[i] & 0xFF;
-            hex[i * 2] = HEX_CHARS[x >>> 4];
-            hex[i * 2 + 1] = HEX_CHARS[x & 0x0F];
+        int i = 0;
+        for (byte aByte : bytes) {
+            hex[i++] = HEX_CHARS[(aByte & 0xF0) >>> 4];
+            hex[i++] = HEX_CHARS[aByte & 0x0F];
         }
-        return new String(hex).toLowerCase();
+        return new String(hex);
     }
 }
