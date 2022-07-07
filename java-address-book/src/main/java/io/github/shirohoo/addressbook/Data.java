@@ -33,8 +33,9 @@ public final class Data {
 
     @Override
     public String toString() {
-        return "Data{id='%s', name='%s', gender='%s', age=%d, phoneNumber='%s', address='%s'}"
-                .formatted(id, name, gender, age, phoneNumber, address);
+        return """
+                {"id": "%s", "name": "%s", "gender": "%s", "age": %d, "phoneNumber": "%s", "address": "%s"}
+                """.formatted(id, name, gender, age, phoneNumber, address);
     }
 
     @Override
