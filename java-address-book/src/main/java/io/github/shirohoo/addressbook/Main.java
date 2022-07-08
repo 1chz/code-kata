@@ -6,18 +6,14 @@ import java.util.UUID;
 
 public class Main {
     public static void main(String[] args) {
-        FileRepository repository = createRepository();
-        write(repository, 10_000);
-        read(repository, "00a5c2166d5d67123a59a8620e614f714ffdc5931186752ebe21271a09da93dc");
-    }
-
-    private static FileRepository createRepository() {
         Path root = Paths.get(System.getProperty("user.home"), "address-book");
         FileManager fileManager = new FileManager(root);
-        return new FileRepository(fileManager);
+
+        write(fileManager, 1_000);
+        read(fileManager, "00a5c2166d5d67123a59a8620e614f714ffdc5931186752ebe21271a09da93dc");
     }
 
-    private static void write(FileRepository repository, int count) {
+    private static void write(FileManager fileManager, int count) {
         for (int i = 0; i < count; i++) {
             Data data = Data.builder()
                     .id(UUID.randomUUID())
@@ -28,12 +24,12 @@ public class Main {
                     .address("Korea")
                     .build();
 
-            repository.save(data);
+            fileManager.save(data);
         }
     }
 
-    private static void read(FileRepository repository, String id) {
-        String found = repository.find(id);
+    private static void read(FileManager fileManager, String id) {
+        String found = fileManager.find(id);
         System.out.println(found);
     }
 }
