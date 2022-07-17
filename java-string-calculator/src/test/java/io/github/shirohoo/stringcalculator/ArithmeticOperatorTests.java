@@ -1,13 +1,11 @@
-package io.github.shirohoo.calculator.app.domain;
+package io.github.shirohoo.stringcalculator;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class ArithmeticOperatorTests {
     @MethodSource
@@ -33,14 +31,14 @@ class ArithmeticOperatorTests {
             "*:5:2:10",
             "/:5:2:2.5"
     }, delimiter = ':')
-    void apply(char operator, double left, double right, double expected) {
+    void shouldOperationResultMatchingTheOperatorMustBeReturned(char operator, double left, double right, double expected) {
         // given
-        ArithmeticOperator arithmeticOperator = ArithmeticOperator.findByOperator(operator);
+        ArithmeticOperator sut = ArithmeticOperator.findByOperator(operator);
 
         // when
-        double sut = arithmeticOperator.apply(left, right);
+        double actual = sut.apply(left, right);
 
         // then
-        assertThat(sut).isEqualTo(expected);
+        assertThat(actual).isEqualTo(expected);
     }
 }

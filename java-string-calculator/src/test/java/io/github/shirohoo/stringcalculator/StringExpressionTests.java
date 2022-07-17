@@ -1,13 +1,13 @@
-package io.github.shirohoo.calculator.app.domain;
+package io.github.shirohoo.stringcalculator;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import java.util.Queue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.Queue;
-
-import static org.assertj.core.api.Assertions.*;
 
 class StringExpressionTests {
     @ParameterizedTest
@@ -17,7 +17,7 @@ class StringExpressionTests {
             "2 +44 -7 * 1 /5",
             "125161"
     })
-    void 올바른_수식이_입력되면_인스턴스가_생성된다(String expr) {
+    void shouldInstanceIsCreatedWhenCorrectExpressionEntered(String expr) {
         assertThatCode(() -> new StringExpression(expr))
                 .doesNotThrowAnyException();
     }
@@ -33,33 +33,33 @@ class StringExpressionTests {
             "125161*",
             "125161/"
     })
-    void 올바른_수식이_입력되지않으면_예외가_발생한다(String expr) {
+    void shouldNotEnteredAnExceptionIsRaised(String expr) {
         assertThatThrownBy(() -> new StringExpression(expr))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("올바른 수식을 입력하세요");
+                .hasMessage("Please enter the correct expression.");
     }
 
     @Test
-    void 수식을_분리하여_연산자를_반환한다() {
+    void shouldSplitExpressionReturnOperator() {
         // given
-        StringExpression expression = new StringExpression("2 +44 -7 * 1 /5");
+        StringExpression sut = new StringExpression("2 +44 -7 * 1 /5");
 
         // when
-        Queue<Character> operators = expression.getOperators();
+        Queue<Character> actual = sut.getOperators();
 
         // then
-        assertThat(operators.size()).isEqualTo(4);
+        assertThat(actual.size()).isEqualTo(4);
     }
 
     @Test
-    void 수식을_분리하여_피연산자를_반환한다() {
+    void shouldSplitExpressionReturnOperand() {
         // given
-        StringExpression expression = new StringExpression("2 +44 -7 * 1 /5");
+        StringExpression sut = new StringExpression("2 +44 -7 * 1 /5");
 
         // when
-        Queue<Double> operands = expression.getOperands();
+        Queue<Double> actual = sut.getOperands();
 
         // then
-        assertThat(operands.size()).isEqualTo(5);
+        assertThat(actual.size()).isEqualTo(5);
     }
 }

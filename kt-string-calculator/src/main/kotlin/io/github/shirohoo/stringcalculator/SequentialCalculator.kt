@@ -1,4 +1,4 @@
-package io.github.shirohoo.calculator
+package io.github.shirohoo.stringcalculator
 
 import java.util.*
 
@@ -6,22 +6,12 @@ class SequentialCalculator : Calculator {
     override fun calculate(expr: Expression): Double {
         val operators = getOperators(expr)
         val operands = getOperands(expr)
-
-        var result = operands.poll()
-        while (operators.isNotEmpty()) {
-            ArithmeticOperator.findByOperator(operators.poll()).apply {
-                result = apply(result, operands.poll())
-            }
-        }
-        return result
+        return operands.reduce(accumulate(operators))
     }
 
     private fun getOperators(expr: Expression): Queue<Char> {
         return expr.expr
             .replace("[\\d\\s]".toRegex(), "")
-            .split("")
-            .filter(String::isNotEmpty)
-            .map(String::single)
             .toCollection(LinkedList())
     }
 
@@ -29,7 +19,14 @@ class SequentialCalculator : Calculator {
         return expr.expr
             .split("\\D".toRegex())
             .filter(String::isNotEmpty)
-            .map(String::toDouble)
-            .toCollection(LinkedList())
+            .mapTo(LinkedList(), String::toDouble)
+    }
+
+    private fun accumulate(operators: Queue<Char>): (Double, Double) -> Double {
+        return { accumulated: Double, nextVal: Double ->
+            val operator = operators.poll()
+            val arithmeticOperator = ArithmeticOperator.findByOperator(operator)
+            arithmeticOperator.apply(accumulated, nextVal)
+        }
     }
 }

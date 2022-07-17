@@ -1,4 +1,4 @@
-package io.github.shirohoo.calculator
+package io.github.shirohoo.stringcalculator
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest

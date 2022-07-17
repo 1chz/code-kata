@@ -1,4 +1,4 @@
-package io.github.shirohoo.calculator
+package io.github.shirohoo.stringcalculator
 
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
@@ -45,7 +45,7 @@ class ExpressionTests {
         ]
     )
     fun `비정상적인 수식`(expr: String) {
-        assertThrows<IllegalArgumentException>("올바른 수식이 아닙니다") {
+        assertThrows<IllegalArgumentException>("not the correct expression") {
             Expression(expr)
         }
     }

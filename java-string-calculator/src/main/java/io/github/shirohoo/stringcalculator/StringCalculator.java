@@ -1,4 +1,4 @@
-package io.github.shirohoo.calculator.app.domain;
+package io.github.shirohoo.stringcalculator;
 
 import java.util.Queue;
 import java.util.function.BinaryOperator;
