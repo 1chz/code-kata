@@ -45,6 +45,8 @@ public final class StringExpression {
     }
 
     public Queue<String> splitExpression() {
-        return null;
+        return stream(expr.replaceAll("(\\d)([+\\-*/])", "$1 $2 ")
+                .split(" "))
+                .collect(toCollection(LinkedList::new));
     }
 }
