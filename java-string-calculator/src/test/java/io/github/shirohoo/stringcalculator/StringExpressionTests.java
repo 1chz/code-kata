@@ -57,33 +57,9 @@ class StringExpressionTests {
         StringExpression sut = new StringExpression("2 +44 -7 * 1 /5");
 
         // when
-        Queue<String> actual = sut.splitExpression();
+        Queue<String> actual = sut.split();
 
         // then
         assertThat(actual.size()).isEqualTo(9);
-    }
-
-    @Test
-    void shouldSplitExpressionReturnOperator() {
-        // given
-        StringExpression sut = new StringExpression("2 +44 -7 * 1 /5");
-
-        // when
-        Queue<Character> actual = sut.getOperators();
-
-        // then
-        assertThat(actual.size()).isEqualTo(4);
-    }
-
-    @Test
-    void shouldSplitExpressionReturnOperand() {
-        // given
-        StringExpression sut = new StringExpression("2 +44 -7 * 1 /5");
-
-        // when
-        Queue<Double> actual = sut.getOperands();
-
-        // then
-        assertThat(actual.size()).isEqualTo(5);
     }
 }
