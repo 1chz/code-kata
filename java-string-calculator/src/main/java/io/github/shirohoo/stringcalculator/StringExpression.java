@@ -43,4 +43,8 @@ public final class StringExpression {
                 .map(Double::parseDouble)
                 .collect(toCollection(LinkedList::new));
     }
+
+    public Queue<String> splitExpression() {
+        return null;
+    }
 }
