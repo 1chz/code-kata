@@ -45,7 +45,7 @@ class StringExpressionTests {
             "123 +1 /0 +3",
             "123 +1 /0*2",
     })
-    void shouldThrowExceptionThatSaysNotDivisibleByZero(String expr) {
+    void shouldThrownExceptionThatSaysNotDivisibleByZero(String expr) {
         assertThatThrownBy(() -> new StringExpression(expr))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("You can't divide by zero because it causes an infinite loop.");
