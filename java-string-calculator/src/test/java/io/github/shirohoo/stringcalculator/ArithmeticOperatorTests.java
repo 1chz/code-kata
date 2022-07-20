@@ -1,11 +1,15 @@
 package io.github.shirohoo.stringcalculator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ArithmeticOperatorTests {
     @MethodSource
@@ -22,6 +26,14 @@ class ArithmeticOperatorTests {
                 Arguments.of('*', ArithmeticOperator.MULTIPLY),
                 Arguments.of('/', ArithmeticOperator.DIVIDE)
         );
+    }
+
+    @Test
+    void shouldThrownExceptionThatNotDivisibleByZero() {
+        ArithmeticOperator divide = ArithmeticOperator.DIVIDE;
+        assertThatThrownBy(() -> divide.apply(1, 0))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessage("not divisible by zero");
     }
 
     @ParameterizedTest
