@@ -1,5 +1,6 @@
 package io.github.shirohoo.stringcalculator;
 
+import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.regex.Pattern;
@@ -44,9 +45,9 @@ public final class StringExpression {
                 .collect(toCollection(LinkedList::new));
     }
 
-    public Queue<String> splitExpression() {
+    public ArrayDeque<String> splitExpression() {
         return stream(expr.replaceAll("(\\d)([+\\-*/])", "$1 $2 ")
                 .split(" "))
-                .collect(toCollection(LinkedList::new));
+                .collect(toCollection(ArrayDeque::new));
     }
 }
