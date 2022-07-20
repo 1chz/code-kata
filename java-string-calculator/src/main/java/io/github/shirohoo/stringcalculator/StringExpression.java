@@ -1,21 +1,29 @@
 package io.github.shirohoo.stringcalculator;
 
-import static java.util.Arrays.stream;
-import static java.util.stream.Collectors.toCollection;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.regex.Pattern;
 
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toCollection;
+
 public final class StringExpression {
-    private static final Pattern PATTERN = Pattern.compile("^\\d+(:? ?[+\\-*/] ?\\d+)*$");
+    private static final Pattern pattern = Pattern.compile("^\\d+(:? ?[+\\-*/] ?\\d+)*$");
 
     private final String expr;
 
     public StringExpression(String expr) {
-        if (expr == null || !PATTERN.matcher(expr).matches()) {
+        if (expr == null || !pattern.matcher(expr).matches()) {
             throw new IllegalArgumentException("Please enter the correct expression.");
         }
-        this.expr = expr.replace(" ", "");
+
+        expr = expr.replace(" ", "");
+
+        if (expr.contains("/0")) {
+            throw new IllegalArgumentException("You can't divide by zero because it causes an infinite loop.");
+        }
+
+        this.expr = expr;
     }
 
     public Queue<Character> getOperators() {
