@@ -1,38 +1,29 @@
 package io.github.shirohoo.stringcalculator;
 
+import java.util.ArrayDeque;
+
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toCollection;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.regex.Pattern;
 
 public final class StringExpression {
-    private static final Pattern PATTERN = Pattern.compile("^\\d+(:? ?[+\\-*/] ?\\d+)*$");
-
     private final String expr;
 
     public StringExpression(String expr) {
-        if (expr == null || !PATTERN.matcher(expr).matches()) {
+        if (expr == null || !expr.matches("^\\d+(:? ?[+\\-*/] ?\\d+)*$")) {
             throw new IllegalArgumentException("Please enter the correct expression.");
         }
-        this.expr = expr.replace(" ", "");
-    }
 
-    public Queue<Character> getOperators() {
-        String[] split = expr.replaceAll("\\d", "").split("");
-
-        if (split.length == 0 || split.length == 1) {
-            return new LinkedList<>();
+        expr = expr.replace(" ", "");
+        if (expr.contains("/0")) {
+            throw new IllegalArgumentException("You can't divide by zero because it causes an infinite loop.");
         }
 
-        return stream(split)
-                .map(operator -> operator.charAt(0))
-                .collect(toCollection(LinkedList::new));
+        this.expr = expr;
     }
 
-    public Queue<Double> getOperands() {
-        return stream(expr.split("\\D"))
-                .map(Double::parseDouble)
-                .collect(toCollection(LinkedList::new));
+    public ArrayDeque<String> split() {
+        return stream(expr.replaceAll("(\\d)([+\\-*/])", "$1 $2 ")
+                .split(" "))
+                .collect(toCollection(ArrayDeque::new));
     }
 }
