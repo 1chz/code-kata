@@ -39,6 +39,18 @@ class StringExpressionTests {
                 .hasMessage("Please enter the correct expression.");
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "123 +1 /0",
+            "123 +1 /0 +3",
+            "123 +1 /0*2",
+    })
+    void shouldThrowExceptionThatSaysNotDivisibleByZero(String expr) {
+        assertThatThrownBy(() -> new StringExpression(expr))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("You can't divide by zero because it causes an infinite loop.");
+    }
+
     @Test
     void shouldSplitExpressionReturnOperator() {
         // given
