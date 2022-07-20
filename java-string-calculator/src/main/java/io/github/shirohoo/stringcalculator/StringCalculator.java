@@ -1,10 +1,12 @@
 package io.github.shirohoo.stringcalculator;
 
 import java.util.ArrayDeque;
+import java.util.Objects;
 
 @SuppressWarnings("all") // there will never be a problem
 public final class StringCalculator {
     public double calculate(StringExpression expr) {
+        Objects.requireNonNull(expr);
         return calculate(expr.split());
     }
 
