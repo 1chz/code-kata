@@ -1,13 +1,13 @@
 package io.github.shirohoo.stringcalculator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import java.util.Queue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Queue;
+
+import static org.assertj.core.api.Assertions.*;
 
 class StringExpressionTests {
     @ParameterizedTest
@@ -49,6 +49,18 @@ class StringExpressionTests {
         assertThatThrownBy(() -> new StringExpression(expr))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("You can't divide by zero because it causes an infinite loop.");
+    }
+
+    @Test
+    void shouldReturnQueueForSplitExpression() {
+        // given
+        StringExpression sut = new StringExpression("2 +44 -7 * 1 /5");
+
+        // when
+        Queue<String> actual = sut.splitExpression();
+
+        // then
+        assertThat(actual.size()).isEqualTo(9);
     }
 
     @Test
