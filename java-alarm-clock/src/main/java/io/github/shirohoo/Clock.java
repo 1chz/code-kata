@@ -23,9 +23,10 @@ public final class Clock {
         timer.scheduleAtFixedRate(new PrintTimeTask(), new Date(), durationInMs);
     }
 
-    public static String currentTime() {
+    public static Time currentTime() {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss");
-        return LocalTime.now().format(timeFormatter);
+        String time = LocalTime.now().format(timeFormatter);
+        return new Time(time);
     }
 
     private static class PrintTimeTask extends TimerTask {
