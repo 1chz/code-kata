@@ -2,29 +2,31 @@ package io.github.shirohoo;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public final class Clock {
+final class Clock extends Thread {
     private final Timer timer;
+
     private final int durationInMs;
 
     public Clock() {
         this(1_000);
     }
 
-    public Clock(int durationInMs) {
+    private Clock(int durationInMs) {
         this.timer = new Timer();
         this.durationInMs = durationInMs;
     }
 
+    @Override
     public void run() {
-        timer.scheduleAtFixedRate(new PrintTimeTask(), new Date(), durationInMs);
+        int firstDelayInMs = 1_000;
+        timer.scheduleAtFixedRate(new PrintTimeTask(), firstDelayInMs, durationInMs);
     }
 
     public static Time currentTime() {
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm:ss");
         String time = LocalTime.now().format(timeFormatter);
         return new Time(time);
     }
