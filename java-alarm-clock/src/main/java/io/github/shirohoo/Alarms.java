@@ -27,11 +27,9 @@ final class Alarms {
     }
 
     public Optional<Time> timeFor(Time time) {
-        synchronized (time) {
-            if (times.removeIf(it -> it.equals(time))) {
-                return Optional.of(time);
-            }
-            return Optional.empty();
+        if (times.removeIf(it -> it.equals(time))) {
+            return Optional.of(time);
         }
+        return Optional.empty();
     }
 }
