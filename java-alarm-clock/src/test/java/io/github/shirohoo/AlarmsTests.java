@@ -8,11 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AlarmsTests {
-
     @Test
     void shouldAbleAddToTasks() {
         Alarms sut = new Alarms();
-
         assertDoesNotThrow(() -> sut.registry(new Time("12:00:00")));
     }
 
