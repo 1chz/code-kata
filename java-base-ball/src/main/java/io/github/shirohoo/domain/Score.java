@@ -7,9 +7,6 @@ public record Score(int ballCount, int strikeCount) {
 
     @Override
     public String toString() {
-        if (strikeOut()) {
-            return "3스트라이크";
-        }
         if (ballCount == 0 && strikeCount == 0) {
             return "낫싱";
         }
