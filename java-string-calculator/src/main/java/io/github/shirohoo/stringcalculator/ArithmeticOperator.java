@@ -1,6 +1,7 @@
 package io.github.shirohoo.stringcalculator;
 
 import static java.util.Arrays.stream;
+
 import java.util.function.DoubleBinaryOperator;
 
 public enum ArithmeticOperator {
@@ -19,10 +20,7 @@ public enum ArithmeticOperator {
     }
 
     public static ArithmeticOperator findByOperator(char operator) {
-        return stream(values())
-                .filter(it -> it.operator == operator)
-                .findFirst()
-                .orElseThrow();
+        return stream(values()).filter(it -> it.operator == operator).findFirst().orElseThrow();
     }
 
     public double apply(double left, double right) {

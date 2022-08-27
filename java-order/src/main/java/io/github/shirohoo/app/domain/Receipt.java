@@ -21,9 +21,7 @@ public final class Receipt {
     }
 
     public long orderAmount() {
-        return products.stream()
-            .mapToLong(product -> product.price() * product.quantity())
-            .sum();
+        return products.stream().mapToLong(product -> product.price() * product.quantity()).sum();
     }
 
     public long deliveryFee() {

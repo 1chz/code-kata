@@ -1,8 +1,10 @@
 package io.github.shirohoo.racing.adapter.out.console;
 
 import static java.util.stream.Collectors.joining;
+
 import io.github.shirohoo.racing.app.domain.Car;
 import io.github.shirohoo.racing.app.port.out.RacingGame;
+
 import java.util.List;
 
 public class ConsoleOutputAdapter {
@@ -17,12 +19,9 @@ public class ConsoleOutputAdapter {
     }
 
     public void showRoundMessage(RacingGame racingGame) {
-        StringBuilder sb = new StringBuilder(NEW_LINE)
-            .append("실행 결과")
-            .append(NEW_LINE);
+        StringBuilder sb = new StringBuilder(NEW_LINE).append("실행 결과").append(NEW_LINE);
 
-        racingGame.eachRound()
-            .forEach(cars -> buildRoundMessage(sb, cars));
+        racingGame.eachRound().forEach(cars -> buildRoundMessage(sb, cars));
 
         print(sb.toString());
     }
@@ -31,7 +30,8 @@ public class ConsoleOutputAdapter {
         for (Car car : cars) {
             String carName = car.name();
             int currentPosition = car.currentPosition();
-            sb.append(String.format("%s : %s%s", carName, convertSymbol(currentPosition), NEW_LINE));
+            sb.append(
+                    String.format("%s : %s%s", carName, convertSymbol(currentPosition), NEW_LINE));
         }
         sb.append(NEW_LINE);
     }
@@ -46,10 +46,7 @@ public class ConsoleOutputAdapter {
     }
 
     private String convertWinnersString(RacingGame racingGame) {
-        return racingGame.winners()
-            .stream()
-            .map(Car::name)
-            .collect(joining(", "));
+        return racingGame.winners().stream().map(Car::name).collect(joining(", "));
     }
 
     private void print(String message) {

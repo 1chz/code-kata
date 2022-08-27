@@ -1,21 +1,24 @@
 package io.github.shirohoo.lotto.app.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
 
 class StatisticsTests {
     Statistics statistics;
 
     @BeforeEach
     void setUp() {
-        statistics = Statistics.from(Map.of(
-            MatchPrize.SIX, 1L,
-            MatchPrize.FIVE, 1L,
-            MatchPrize.FOUR, 1L,
-            MatchPrize.THREE, 1L
-        ));
+        statistics =
+                Statistics.from(
+                        Map.of(
+                                MatchPrize.SIX, 1L,
+                                MatchPrize.FIVE, 1L,
+                                MatchPrize.FOUR, 1L,
+                                MatchPrize.THREE, 1L));
     }
 
     @Test

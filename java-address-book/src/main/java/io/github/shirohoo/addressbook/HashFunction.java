@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 public final class HashFunction {
     private static final String ALGORITHM = "SHA-256";
-    
+
     private static final char[] HEX_CHARS = "0123456789abcdef".toCharArray();
 
     private HashFunction() {}
@@ -30,7 +30,7 @@ public final class HashFunction {
         int i = 0;
         for (byte aByte : bytes) {
             hex[i++] = HEX_CHARS[(aByte & 0xF0) >>> 4]; // 0xF0 = 1111 0000
-            hex[i++] = HEX_CHARS[aByte & 0x0F];         // 0x0F = 0000 1111
+            hex[i++] = HEX_CHARS[aByte & 0x0F]; // 0x0F = 0000 1111
         }
         return new String(hex);
     }

@@ -5,5 +5,6 @@ import io.github.shirohoo.app.domain.Product;
 import io.github.shirohoo.app.domain.SoldOutException;
 
 public interface OrderPort {
-    Product order(Order order) throws InterruptedException, SoldOutException, IllegalArgumentException;
+    Product order(Order order)
+            throws InterruptedException, SoldOutException, IllegalArgumentException;
 }

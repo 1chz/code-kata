@@ -1,10 +1,10 @@
 package io.github.shirohoo.addressbook;
 
+import static io.github.shirohoo.addressbook.HashFunction.hashing;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-import static io.github.shirohoo.addressbook.HashFunction.hashing;
 
 final class FileManager {
     private final Path rootPath;
@@ -22,7 +22,9 @@ final class FileManager {
 
     public void save(Data data) {
         String hash = hashing(data.id);
-        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(getFilePath(hash))))) {
+        try (BufferedWriter bw =
+                new BufferedWriter(
+                        new OutputStreamWriter(new FileOutputStream(getFilePath(hash))))) {
             bw.write(data.toString());
             bw.flush();
         } catch (IOException e) {
@@ -31,7 +33,8 @@ final class FileManager {
     }
 
     public String find(String id) {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(getFilePath(id))))) {
+        try (BufferedReader br =
+                new BufferedReader(new InputStreamReader(new FileInputStream(getFilePath(id))))) {
             return br.readLine();
         } catch (IOException e) {
             throw new RuntimeException(e);

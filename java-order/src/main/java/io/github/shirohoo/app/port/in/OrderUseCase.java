@@ -4,6 +4,7 @@ import io.github.shirohoo.app.domain.Order;
 import io.github.shirohoo.app.domain.Product;
 import io.github.shirohoo.app.domain.SoldOutException;
 import io.github.shirohoo.app.port.out.ProductPersistencePort;
+
 import java.util.concurrent.Semaphore;
 import java.util.logging.Logger;
 
@@ -19,13 +20,15 @@ public final class OrderUseCase implements OrderPort {
     }
 
     @Override
-    public Product order(Order order) throws InterruptedException, SoldOutException, IllegalArgumentException {
+    public Product order(Order order)
+            throws InterruptedException, SoldOutException, IllegalArgumentException {
         // critical section
         try {
             semaphore.acquire();
             if (productPersistencePort.existsById(order.id())) {
-                return productPersistencePort.updateByOrder(order)
-                    .orElseThrow(() -> notFound(order));
+                return productPersistencePort
+                        .updateByOrder(order)
+                        .orElseThrow(() -> notFound(order));
             }
             throw notFound(order);
 

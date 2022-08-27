@@ -16,11 +16,10 @@ public class Statistics {
     }
 
     public long totalPrize() {
-        return statistics.entrySet()
-            .stream()
-            .map(totalPrizeByRank())
-            .mapToLong(Long::valueOf)
-            .sum();
+        return statistics.entrySet().stream()
+                .map(totalPrizeByRank())
+                .mapToLong(Long::valueOf)
+                .sum();
     }
 
     private Function<Entry<MatchPrize, Long>, Long> totalPrizeByRank() {

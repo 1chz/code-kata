@@ -16,7 +16,8 @@ public final class StringCalculator {
         }
 
         double left = Double.parseDouble(queue.removeFirst());
-        ArithmeticOperator operator = ArithmeticOperator.findByOperator(queue.removeFirst().charAt(0));
+        ArithmeticOperator operator =
+                ArithmeticOperator.findByOperator(queue.removeFirst().charAt(0));
         double right = Double.parseDouble(queue.removeFirst());
         double result = operator.apply(left, right);
 

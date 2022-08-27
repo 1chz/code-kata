@@ -3,27 +3,34 @@ package io.github.shirohoo.racing.app.usecase;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import io.github.shirohoo.racing.app.domain.Car;
 import io.github.shirohoo.racing.app.domain.RacingGameSettings;
+
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Test;
 
 class RacingGameRunnerTests {
     @Test
     void createRacingGame() {
         RacingGameSettings settings = RacingGameSettings.of("siro", 3, () -> true);
 
-        assertThatCode(() -> {
-            RacingGameRunner.from(settings);
-        }).doesNotThrowAnyException();
+        assertThatCode(
+                        () -> {
+                            RacingGameRunner.from(settings);
+                        })
+                .doesNotThrowAnyException();
     }
 
     @Test
     void createRacingGameExceptionIfSettingsNull() {
-        assertThatThrownBy(() -> {
-            RacingGameRunner.from(null);
-        }).isInstanceOf(NullPointerException.class);
+        assertThatThrownBy(
+                        () -> {
+                            RacingGameRunner.from(null);
+                        })
+                .isInstanceOf(NullPointerException.class);
     }
 
     @Test
@@ -37,9 +44,9 @@ class RacingGameRunnerTests {
 
         // ...then
         assertThat(eachRound)
-            .flatMap(ArrayList::new)
-            .map(Car::currentPosition)
-            .containsExactlyInAnyOrder(1, 2, 3);
+                .flatMap(ArrayList::new)
+                .map(Car::currentPosition)
+                .containsExactlyInAnyOrder(1, 2, 3);
     }
 
     @Test
@@ -52,8 +59,6 @@ class RacingGameRunnerTests {
         List<Car> winners = racingGameRunner.winners();
 
         // ...then
-        assertThat(winners)
-            .extracting("name")
-            .containsExactly("siro");
+        assertThat(winners).extracting("name").containsExactly("siro");
     }
 }

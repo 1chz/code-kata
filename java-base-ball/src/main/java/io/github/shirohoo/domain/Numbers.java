@@ -9,12 +9,13 @@ public final class Numbers {
     private final String val;
 
     public Numbers() {
-        this(RandomGenerator.getDefault()
-                .ints(1, 10)
-                .distinct()
-                .limit(3)
-                .mapToObj(String::valueOf)
-                .collect(joining()));
+        this(
+                RandomGenerator.getDefault()
+                        .ints(1, 10)
+                        .distinct()
+                        .limit(3)
+                        .mapToObj(String::valueOf)
+                        .collect(joining()));
     }
 
     public Numbers(String val) {
@@ -71,7 +72,6 @@ public final class Numbers {
 
     @Override
     public String toString() {
-        return "Numbers[" +
-                "val=" + val + ']';
+        return "Numbers[" + "val=" + val + ']';
     }
 }

@@ -6,6 +6,7 @@ import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.joining;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -21,18 +22,16 @@ public class Lottos {
     }
 
     public String stringValue() {
-        return lottos.stream()
-            .map(Lotto::stringValue)
-            .collect(joining(lineSeparator()));
+        return lottos.stream().map(Lotto::stringValue).collect(joining(lineSeparator()));
     }
 
     public Statistics drawn(Lotto winningLotto) {
         return Statistics.from(
-            lottos.stream()
-                .map(lotto -> lotto.drawn(winningLotto))
-                .collect(collectingAndThen(
-                    groupingBy(identity(), counting()),
-                    Collections::unmodifiableMap))
-        );
+                lottos.stream()
+                        .map(lotto -> lotto.drawn(winningLotto))
+                        .collect(
+                                collectingAndThen(
+                                        groupingBy(identity(), counting()),
+                                        Collections::unmodifiableMap)));
     }
 }

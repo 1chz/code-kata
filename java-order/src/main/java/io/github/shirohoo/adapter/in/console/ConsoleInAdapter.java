@@ -11,10 +11,11 @@ public final class ConsoleInAdapter {
 
     public boolean isOrder() {
         String line = nextLine();
-        if (line.isBlank() ||
-            (!"o".equalsIgnoreCase(line) && !"order".equalsIgnoreCase(line) &&
-             !"q".equalsIgnoreCase(line) && !"quit".equalsIgnoreCase(line))
-        ) {
+        if (line.isBlank()
+                || (!"o".equalsIgnoreCase(line)
+                        && !"order".equalsIgnoreCase(line)
+                        && !"q".equalsIgnoreCase(line)
+                        && !"quit".equalsIgnoreCase(line))) {
             throw new IllegalArgumentException("'o[order]' 또는 'q[quit]' 를 입력해야 합니다.");
         }
         return "o".equalsIgnoreCase(line) || "order".equalsIgnoreCase(line);

@@ -13,13 +13,16 @@ public final class Product implements Comparable<Product> {
             throw new IllegalArgumentException("id는 0보다 작을 수 없습니다. 현재 id = '%s'".formatted(id));
         }
         if (name.isBlank()) {
-            throw new IllegalArgumentException("name은 null이거나 empty일 수 없습니다. 현재 name = '%s'".formatted(name));
+            throw new IllegalArgumentException(
+                    "name은 null이거나 empty일 수 없습니다. 현재 name = '%s'".formatted(name));
         }
         if (price < 0) {
-            throw new IllegalArgumentException("price는 0보다 작을 수 없습니다. 현재 price = '%s'".formatted(price));
+            throw new IllegalArgumentException(
+                    "price는 0보다 작을 수 없습니다. 현재 price = '%s'".formatted(price));
         }
         if (quantity < 0) {
-            throw new IllegalArgumentException("quantity는 0보다 작을 수 없습니다. 현재 quantity = '%s'".formatted(quantity));
+            throw new IllegalArgumentException(
+                    "quantity는 0보다 작을 수 없습니다. 현재 quantity = '%s'".formatted(quantity));
         }
 
         this.id = id;
@@ -29,7 +32,11 @@ public final class Product implements Comparable<Product> {
     }
 
     public static Product from(List<String> row) {
-        return new Product(Long.parseLong(row.get(0)), row.get(1), Long.parseLong(row.get(2)), Integer.parseInt(row.get(3)));
+        return new Product(
+                Long.parseLong(row.get(0)),
+                row.get(1),
+                Long.parseLong(row.get(2)),
+                Integer.parseInt(row.get(3)));
     }
 
     public static Product from(long id, String name, long price, int quantity) {

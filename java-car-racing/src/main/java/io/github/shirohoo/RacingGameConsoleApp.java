@@ -17,7 +17,8 @@ public class RacingGameConsoleApp {
         output.setTryCountMessage();
         int tryCount = input.tryCount();
 
-        RacingGameSettings settings = RacingGameSettings.of(carNames, tryCount, new RandomForwardCondition());
+        RacingGameSettings settings =
+                RacingGameSettings.of(carNames, tryCount, new RandomForwardCondition());
         RacingGameRunner racingGameRunner = RacingGameRunner.from(settings);
 
         output.showRoundMessage(racingGameRunner);

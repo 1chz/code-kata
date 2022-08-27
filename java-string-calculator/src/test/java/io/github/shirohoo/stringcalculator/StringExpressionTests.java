@@ -1,5 +1,7 @@
 package io.github.shirohoo.stringcalculator;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -7,32 +9,16 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Queue;
 
-import static org.assertj.core.api.Assertions.*;
-
 class StringExpressionTests {
     @ParameterizedTest
-    @ValueSource(strings = {
-            "2+44-7*1/5",
-            "2 + 44 - 7 * 1 / 5",
-            "2 +44 -7 * 1 /5",
-            "125161"
-    })
+    @ValueSource(strings = {"2+44-7*1/5", "2 + 44 - 7 * 1 / 5", "2 +44 -7 * 1 /5", "125161"})
     void shouldInstanceIsCreatedWhenCorrectExpressionEntered(String expr) {
-        assertThatCode(() -> new StringExpression(expr))
-                .doesNotThrowAnyException();
+        assertThatCode(() -> new StringExpression(expr)).doesNotThrowAnyException();
     }
 
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {
-            "--1",
-            "5++7",
-            "77+1--0",
-            "125161+",
-            "125161-",
-            "125161*",
-            "125161/"
-    })
+    @ValueSource(strings = {"--1", "5++7", "77+1--0", "125161+", "125161-", "125161*", "125161/"})
     void shouldNotEnteredAnExceptionIsRaised(String expr) {
         assertThatThrownBy(() -> new StringExpression(expr))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -40,11 +26,12 @@ class StringExpressionTests {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {
-            "123 +1 /0",
-            "123 +1 /0 +3",
-            "123 +1 /0*2",
-    })
+    @ValueSource(
+            strings = {
+                "123 +1 /0",
+                "123 +1 /0 +3",
+                "123 +1 /0*2",
+            })
     void shouldThrownExceptionThatSaysNotDivisibleByZero(String expr) {
         assertThatThrownBy(() -> new StringExpression(expr))
                 .isInstanceOf(IllegalArgumentException.class)

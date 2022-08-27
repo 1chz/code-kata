@@ -3,6 +3,7 @@ package io.github.shirohoo.racing.app.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -13,9 +14,11 @@ class RacingGameRunnerSettingsTests {
         String carNames = "shiro,siro";
         int tryCount = 3;
 
-        assertThatCode(() -> {
-            RacingGameSettings.of(carNames, tryCount, () -> true);
-        }).doesNotThrowAnyException();
+        assertThatCode(
+                        () -> {
+                            RacingGameSettings.of(carNames, tryCount, () -> true);
+                        })
+                .doesNotThrowAnyException();
     }
 
     @Test
@@ -23,9 +26,11 @@ class RacingGameRunnerSettingsTests {
         String carNames = "shiro,siro";
         int tryCount = 0;
 
-        assertThatThrownBy(() -> {
-            RacingGameSettings.of(carNames, tryCount, () -> true);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(
+                        () -> {
+                            RacingGameSettings.of(carNames, tryCount, () -> true);
+                        })
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
@@ -33,9 +38,11 @@ class RacingGameRunnerSettingsTests {
     void createSettingsExceptionIfCarNamesNullOrEmpty(String carNames) {
         int tryCount = 3;
 
-        assertThatThrownBy(() -> {
-            RacingGameSettings.of(carNames, tryCount, () -> true);
-        }).isOfAnyClassIn(IllegalArgumentException.class, NullPointerException.class);
+        assertThatThrownBy(
+                        () -> {
+                            RacingGameSettings.of(carNames, tryCount, () -> true);
+                        })
+                .isOfAnyClassIn(IllegalArgumentException.class, NullPointerException.class);
     }
 
     @Test

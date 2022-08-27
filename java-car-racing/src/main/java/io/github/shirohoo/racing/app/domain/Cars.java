@@ -1,6 +1,7 @@
 package io.github.shirohoo.racing.app.domain;
 
 import static java.util.Arrays.stream;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -13,9 +14,7 @@ public class Cars {
             throw new IllegalArgumentException();
         }
 
-        this.cars = stream(cars.split(","))
-            .map(Car::from)
-            .toList();
+        this.cars = stream(cars.split(",")).map(Car::from).toList();
     }
 
     public static Cars createCars(String carNames) {
@@ -28,14 +27,10 @@ public class Cars {
     }
 
     public List<Car> winners() {
-        return cars.stream()
-            .filter(car -> car.currentPosition() == maxPosition())
-            .toList();
+        return cars.stream().filter(car -> car.currentPosition() == maxPosition()).toList();
     }
 
     private int maxPosition() {
-        return cars.stream()
-            .mapToInt(Car::currentPosition)
-            .reduce(Integer.MIN_VALUE, Integer::max);
+        return cars.stream().mapToInt(Car::currentPosition).reduce(Integer.MIN_VALUE, Integer::max);
     }
 }

@@ -3,6 +3,7 @@ package io.github.shirohoo.lotto.app.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,9 +13,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 class LottoMachineTests {
     @Test
     void shouldNotThrownAnyExceptionWhenInit() {
-        assertThatCode(() -> {
-            LottoMachine lottoMachine = new LottoMachine();
-        }).doesNotThrowAnyException();
+        assertThatCode(
+                        () -> {
+                            LottoMachine lottoMachine = new LottoMachine();
+                        })
+                .doesNotThrowAnyException();
     }
 
     @ParameterizedTest
@@ -27,9 +30,7 @@ class LottoMachineTests {
         Lotto lotto = lottoMachine.ticketing(winningNumbers);
 
         // ...then
-        assertThat(lotto)
-            .isNotNull()
-            .isInstanceOf(Lotto.class);
+        assertThat(lotto).isNotNull().isInstanceOf(Lotto.class);
     }
 
     @ParameterizedTest
@@ -39,10 +40,12 @@ class LottoMachineTests {
         LottoMachine lottoMachine = new LottoMachine();
 
         // ...when | then
-        assertThatThrownBy(() -> {
-            Lotto lotto = lottoMachine.ticketing(winningNumbers);
-        }).isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("winningNumbers cannot be null or empty");
+        assertThatThrownBy(
+                        () -> {
+                            Lotto lotto = lottoMachine.ticketing(winningNumbers);
+                        })
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("winningNumbers cannot be null or empty");
     }
 
     @RepeatedTest(100)
@@ -54,9 +57,7 @@ class LottoMachineTests {
         Lotto lotto = lottoMachine.ticketing();
 
         // ...then
-        assertThat(lotto)
-            .isNotNull()
-            .isInstanceOf(Lotto.class);
+        assertThat(lotto).isNotNull().isInstanceOf(Lotto.class);
     }
 
     @Test
@@ -68,8 +69,6 @@ class LottoMachineTests {
         Lottos lottos = lottoMachine.ticketing(10);
 
         // ...then
-        assertThat(lottos)
-            .isNotNull()
-            .isInstanceOf(Lottos.class);
+        assertThat(lottos).isNotNull().isInstanceOf(Lottos.class);
     }
 }

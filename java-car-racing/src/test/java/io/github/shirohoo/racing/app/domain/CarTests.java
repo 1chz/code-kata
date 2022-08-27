@@ -3,37 +3,45 @@ package io.github.shirohoo.racing.app.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
+import java.util.stream.Stream;
+
 class CarTests {
     @Test
     void createCar() {
         String carName = "junny";
-        assertThatCode(() -> {
-            Car car = Car.from(carName);
-            assertThat(car).isNotNull();
-        }).doesNotThrowAnyException();
+        assertThatCode(
+                        () -> {
+                            Car car = Car.from(carName);
+                            assertThat(car).isNotNull();
+                        })
+                .doesNotThrowAnyException();
     }
 
     @Test
     void createCarNameExceptionIfNameLengthGreaterThenFive() {
         String carName = "abcdef";
-        assertThatThrownBy(() -> {
-            Car car = Car.from(carName);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(
+                        () -> {
+                            Car car = Car.from(carName);
+                        })
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     void createCarExceptionIfNameNullOrEmpty(String carName) {
-        assertThatThrownBy(() -> {
-            Car car = Car.from(carName);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(
+                        () -> {
+                            Car car = Car.from(carName);
+                        })
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -63,9 +71,8 @@ class CarTests {
 
     static Stream<Arguments> forward() {
         return Stream.of(
-            Arguments.of((ForwardCondition) () -> true, 1),
-            Arguments.of((ForwardCondition) () -> false, 0)
-        );
+                Arguments.of((ForwardCondition) () -> true, 1),
+                Arguments.of((ForwardCondition) () -> false, 0));
     }
 
     @Test

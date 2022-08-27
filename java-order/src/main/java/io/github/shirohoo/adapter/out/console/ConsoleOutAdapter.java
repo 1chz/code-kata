@@ -1,9 +1,11 @@
 package io.github.shirohoo.adapter.out.console;
 
 import static java.util.stream.Collectors.joining;
+
 import io.github.shirohoo.app.domain.Product;
 import io.github.shirohoo.app.domain.Products;
 import io.github.shirohoo.app.domain.Receipt;
+
 import java.text.DecimalFormat;
 import java.util.function.Consumer;
 
@@ -18,8 +20,8 @@ public final class ConsoleOutAdapter {
     private static final String EXIT_MESSAGE = "고객님의 주문 감사합니다.";
 
     private static final String ORDER_HISTORY_MESSAGE =
-        """
-            주문 내역: 
+            """
+            주문 내역:
             ----------------------------------------------------------------
             %s
             ----------------------------------------------------------------
@@ -30,8 +32,8 @@ public final class ConsoleOutAdapter {
             """;
 
     private static final String ORDER_HISTORY_WITH_DELIVERY_FEE_MESSAGE =
-        """
-            주문 내역: 
+            """
+            주문 내역:
             ----------------------------------------------------------------
             %s
             ----------------------------------------------------------------
@@ -39,7 +41,7 @@ public final class ConsoleOutAdapter {
             배송비: %s원
             ----------------------------------------------------------------
             지불금액: %s원
-            ----------------------------------------------------------------       
+            ----------------------------------------------------------------
             """;
 
     public void ready() {
@@ -57,12 +59,14 @@ public final class ConsoleOutAdapter {
     }
 
     private Consumer<Product> printTable() {
-        return product -> println(toFullWidth(TABLE_FORMAT.formatted(
-            product.id(),
-            product.name(),
-            DECIMAL_FORMAT.format(product.price()),
-            product.quantity()
-        )));
+        return product ->
+                println(
+                        toFullWidth(
+                                TABLE_FORMAT.formatted(
+                                        product.id(),
+                                        product.name(),
+                                        DECIMAL_FORMAT.format(product.price()),
+                                        product.quantity())));
     }
 
     public void id() {
@@ -75,27 +79,31 @@ public final class ConsoleOutAdapter {
 
     public void orderHistory(Receipt receipt) {
         if (receipt.isSeparateDeliveryFee()) {
-            println(ORDER_HISTORY_WITH_DELIVERY_FEE_MESSAGE.formatted(
-                productList(receipt),
-                DECIMAL_FORMAT.format(receipt.orderAmount()),
-                DECIMAL_FORMAT.format(receipt.deliveryFee()),
-                DECIMAL_FORMAT.format(receipt.paymentAmount())
-            ));
+            println(
+                    ORDER_HISTORY_WITH_DELIVERY_FEE_MESSAGE.formatted(
+                            productList(receipt),
+                            DECIMAL_FORMAT.format(receipt.orderAmount()),
+                            DECIMAL_FORMAT.format(receipt.deliveryFee()),
+                            DECIMAL_FORMAT.format(receipt.paymentAmount())));
             return;
         }
 
-        println(ORDER_HISTORY_MESSAGE.formatted(
-            productList(receipt),
-            DECIMAL_FORMAT.format(receipt.orderAmount()),
-            DECIMAL_FORMAT.format(receipt.paymentAmount())
-        ));
+        println(
+                ORDER_HISTORY_MESSAGE.formatted(
+                        productList(receipt),
+                        DECIMAL_FORMAT.format(receipt.orderAmount()),
+                        DECIMAL_FORMAT.format(receipt.paymentAmount())));
     }
 
     private String productList(Receipt receipt) {
         return receipt.stream()
-            .map(product -> String.format("%s - %s개%s", product.name(), product.quantity(), LINE_SEPARATOR))
-            .collect(joining())
-            .stripTrailing();
+                .map(
+                        product ->
+                                String.format(
+                                        "%s - %s개%s",
+                                        product.name(), product.quantity(), LINE_SEPARATOR))
+                .collect(joining())
+                .stripTrailing();
     }
 
     public void exceptionCaught(Exception e) {
@@ -137,4 +145,3 @@ public final class ConsoleOutAdapter {
         System.out.println();
     }
 }
-

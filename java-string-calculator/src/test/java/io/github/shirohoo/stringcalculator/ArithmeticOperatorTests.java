@@ -1,5 +1,8 @@
 package io.github.shirohoo.stringcalculator;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -7,9 +10,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ArithmeticOperatorTests {
     @MethodSource
@@ -24,8 +24,7 @@ class ArithmeticOperatorTests {
                 Arguments.of('+', ArithmeticOperator.PLUS),
                 Arguments.of('-', ArithmeticOperator.MINUS),
                 Arguments.of('*', ArithmeticOperator.MULTIPLY),
-                Arguments.of('/', ArithmeticOperator.DIVIDE)
-        );
+                Arguments.of('/', ArithmeticOperator.DIVIDE));
     }
 
     @Test
@@ -37,13 +36,11 @@ class ArithmeticOperatorTests {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {
-            "+:5:2:7",
-            "-:5:2:3",
-            "*:5:2:10",
-            "/:5:2:2.5"
-    }, delimiter = ':')
-    void shouldOperationResultMatchingTheOperatorMustBeReturned(char operator, double left, double right, double expected) {
+    @CsvSource(
+            value = {"+:5:2:7", "-:5:2:3", "*:5:2:10", "/:5:2:2.5"},
+            delimiter = ':')
+    void shouldOperationResultMatchingTheOperatorMustBeReturned(
+            char operator, double left, double right, double expected) {
         // given
         ArithmeticOperator sut = ArithmeticOperator.findByOperator(operator);
 

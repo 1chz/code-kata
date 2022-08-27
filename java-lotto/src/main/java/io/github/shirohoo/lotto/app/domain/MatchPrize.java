@@ -4,6 +4,7 @@ import static java.util.Arrays.stream;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toMap;
+
 import java.util.Collections;
 import java.util.Map;
 
@@ -16,11 +17,12 @@ public enum MatchPrize {
     ONE(1, 0),
     ZERO(0, 0);
 
-    private static final Map<Integer, MatchPrize> map = stream(values())
-        .collect(collectingAndThen(
-            toMap(MatchPrize::matchCount, identity()),
-            Collections::unmodifiableMap)
-        );
+    private static final Map<Integer, MatchPrize> map =
+            stream(values())
+                    .collect(
+                            collectingAndThen(
+                                    toMap(MatchPrize::matchCount, identity()),
+                                    Collections::unmodifiableMap));
 
     private final int matchCount;
     private final int prize;

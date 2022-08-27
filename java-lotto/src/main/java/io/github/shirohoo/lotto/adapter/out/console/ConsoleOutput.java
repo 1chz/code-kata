@@ -30,7 +30,7 @@ public class ConsoleOutput {
     public void printStatistics(Statistics statistics, long purchaseAmount) {
         newLine();
         printf(
-            """
+                """
                 당첨 통계
                 ---------
                 3개 일치 (5,000원)- %d개
@@ -39,12 +39,11 @@ public class ConsoleOutput {
                 6개 일치 (2,000,000,000원)- %d개
                 총 수익률은 %.2f입니다.(기준이 1이기 때문에 결과적으로 손해라는 의미임)
                 """,
-            statistics.countOfWinningLotto(MatchPrize.THREE),
-            statistics.countOfWinningLotto(MatchPrize.FOUR),
-            statistics.countOfWinningLotto(MatchPrize.FIVE),
-            statistics.countOfWinningLotto(MatchPrize.SIX),
-            statistics.profitRate(purchaseAmount)
-        );
+                statistics.countOfWinningLotto(MatchPrize.THREE),
+                statistics.countOfWinningLotto(MatchPrize.FOUR),
+                statistics.countOfWinningLotto(MatchPrize.FIVE),
+                statistics.countOfWinningLotto(MatchPrize.SIX),
+                statistics.profitRate(purchaseAmount));
     }
 
     private void println(String msg) {

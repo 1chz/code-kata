@@ -1,6 +1,7 @@
 package io.github.shirohoo.racing.app.domain;
 
 import static java.util.Arrays.stream;
+
 import java.util.Objects;
 
 public record RacingGameSettings(String carNames, int tryCount, ForwardCondition condition) {

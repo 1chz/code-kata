@@ -2,14 +2,17 @@ package io.github.shirohoo.app.domain;
 
 import static io.github.shirohoo.fixture.TestDataProvider.INVALID_ID_QUANTITY_FOR_PRODUCT;
 import static io.github.shirohoo.fixture.TestDataProvider.INVALID_LIST_FOR_PRODUCT;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.List;
 
 class ProductTests {
     @Test
@@ -46,9 +49,8 @@ class ProductTests {
 
         // ...then
         assertAll(
-            () -> assertThat(take.id()).isEqualTo(1),
-            () -> assertThat(take.quantity()).isEqualTo(1)
-        );
+                () -> assertThat(take.id()).isEqualTo(1),
+                () -> assertThat(take.quantity()).isEqualTo(1));
     }
 
     @Test
@@ -58,7 +60,8 @@ class ProductTests {
         Product storeItem = Product.of(1, 9);
 
         // ...when, then
-        assertThatThrownBy(() -> Product.take(order, storeItem)).isInstanceOf(SoldOutException.class);
+        assertThatThrownBy(() -> Product.take(order, storeItem))
+                .isInstanceOf(SoldOutException.class);
     }
 
     @Test
@@ -72,9 +75,8 @@ class ProductTests {
 
         // ...then
         assertAll(
-            () -> assertThat(decrease.id()).isEqualTo(1),
-            () -> assertThat(decrease.quantity()).isEqualTo(0)
-        );
+                () -> assertThat(decrease.id()).isEqualTo(1),
+                () -> assertThat(decrease.quantity()).isEqualTo(0));
     }
 
     @Test
