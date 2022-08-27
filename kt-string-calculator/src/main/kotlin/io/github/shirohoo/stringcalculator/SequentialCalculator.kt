@@ -1,6 +1,7 @@
 package io.github.shirohoo.stringcalculator
 
-import java.util.*
+import java.util.LinkedList
+import java.util.Queue
 
 class SequentialCalculator : Calculator {
     override fun calculate(expr: Expression): Double {

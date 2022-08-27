@@ -16,7 +16,7 @@ data class Numbers private constructor(val values: String) {
         operator fun invoke(values: String): Numbers {
             val charSet = values.toSet()
             return when (charSet.size) {
-                3    -> Numbers(values)
+                3 -> Numbers(values)
                 else -> throw IllegalArgumentException("'Numbers' must be three non-overlapping numbers 1 through 9")
             }
         }

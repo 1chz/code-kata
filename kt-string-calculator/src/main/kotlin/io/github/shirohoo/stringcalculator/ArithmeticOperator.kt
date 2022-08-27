@@ -7,7 +7,7 @@ enum class ArithmeticOperator(
     PLUS('+', { left: Double, right: Double -> left + right }),
     MINUS('-', { left: Double, right: Double -> left - right }),
     MULTIPLY('*', { left: Double, right: Double -> left * right }),
-    DIVIDE('/', { left: Double, right: Double -> left / right }),
+    DIVIDE('/', { left: Double, right: Double -> left / right })
     ;
 
     fun apply(left: Double, right: Double): Double {

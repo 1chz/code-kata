@@ -6,7 +6,7 @@ import io.github.shirohoo.baseball.usecase.BaseBallUseCase
 
 class ConsoleInAdapter(
     private var baseBall: BaseBallUseCase,
-    private val consoleOutAdapter: ConsoleOutAdapter,
+    private val consoleOutAdapter: ConsoleOutAdapter
 ) {
     fun trys() {
         consoleOutAdapter.inputGuide()
