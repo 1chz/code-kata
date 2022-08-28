@@ -16,7 +16,7 @@ public final class ConsoleOutAdapter {
     private static final String READY_MESSAGE = "입력(o[order]: 주문, q[quit]: 종료) : ";
     private static final String TABLE_FORMAT = "| %-10s | %-50s | %10s | %10s |";
     private static final String PRODUCT_ID_MESSAGE = "상품번호 : ";
-    private static final String quantity_MESSAGE = "수량 : ";
+    private static final String QUANTITY_MESSAGE = "수량 : ";
     private static final String EXIT_MESSAGE = "고객님의 주문 감사합니다.";
 
     private static final String ORDER_HISTORY_MESSAGE =
@@ -74,7 +74,7 @@ public final class ConsoleOutAdapter {
     }
 
     public void quantity() {
-        print(quantity_MESSAGE);
+        print(QUANTITY_MESSAGE);
     }
 
     public void orderHistory(Receipt receipt) {
