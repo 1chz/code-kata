@@ -1,8 +1,8 @@
-package io.github.shirohoo.lotto.adapter.out.console;
+package io.github.shirohoo.lotto.application.console;
 
-import io.github.shirohoo.lotto.app.domain.Lottos;
-import io.github.shirohoo.lotto.app.domain.MatchPrize;
-import io.github.shirohoo.lotto.app.domain.Statistics;
+import io.github.shirohoo.lotto.domain.Lottos;
+import io.github.shirohoo.lotto.domain.MatchPrize;
+import io.github.shirohoo.lotto.domain.Statistics;
 
 public class ConsoleOutput {
     private static final String PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";

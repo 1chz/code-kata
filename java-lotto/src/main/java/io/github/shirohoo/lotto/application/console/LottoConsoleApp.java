@@ -1,10 +1,8 @@
-package io.github.shirohoo.lotto;
+package io.github.shirohoo.lotto.application.console;
 
-import io.github.shirohoo.lotto.adapter.in.console.ConsoleInput;
-import io.github.shirohoo.lotto.adapter.out.console.ConsoleOutput;
-import io.github.shirohoo.lotto.app.domain.Lotto;
-import io.github.shirohoo.lotto.app.domain.LottoMachine;
-import io.github.shirohoo.lotto.app.domain.Lottos;
+import io.github.shirohoo.lotto.domain.Lotto;
+import io.github.shirohoo.lotto.domain.LottoMachine;
+import io.github.shirohoo.lotto.domain.Lottos;
 
 public class LottoConsoleApp {
     public static void main(String[] args) {

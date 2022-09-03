@@ -1,4 +1,4 @@
-package io.github.shirohoo.lotto.app.domain;
+package io.github.shirohoo.lotto.domain;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -39,11 +39,13 @@ public class Lotto {
     }
 
     private int matchCount(Lotto target, Lotto winningLotto) {
-        return Math.toIntExact(
+        long matchCount =
                 target.numbers.stream()
                         .mapToInt(unboxed())
                         .filter(winningLotto.numbers::contains)
-                        .count());
+                        .count();
+
+        return Math.toIntExact(matchCount);
     }
 
     private ToIntFunction<Integer> unboxed() {

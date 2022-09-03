@@ -1,4 +1,4 @@
-package io.github.shirohoo.lotto.app.domain;
+package io.github.shirohoo.lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;

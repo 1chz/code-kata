@@ -1,9 +1,10 @@
-package io.github.shirohoo.lotto.app.domain;
+package io.github.shirohoo.lotto.domain;
 
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
+import java.util.Set;
 import java.util.random.RandomGenerator;
 import java.util.random.RandomGeneratorFactory;
 import java.util.stream.LongStream;
@@ -33,7 +34,10 @@ public class LottoMachine {
     }
 
     public Lotto ticketing() {
-        return Lotto.from(randomGenerator.ints(1, 46).distinct().limit(6).boxed().collect(toSet()));
+        Set<Integer> randomNumbers =
+                randomGenerator.ints(1, 46).distinct().limit(6).boxed().collect(toSet());
+
+        return Lotto.from(randomNumbers);
     }
 
     public Lottos ticketing(long purchaseOfNumber) {

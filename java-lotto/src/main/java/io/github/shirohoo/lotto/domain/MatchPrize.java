@@ -1,4 +1,4 @@
-package io.github.shirohoo.lotto.app.domain;
+package io.github.shirohoo.lotto.domain;
 
 import static java.util.Arrays.stream;
 import static java.util.function.Function.identity;
