@@ -14,10 +14,7 @@ class MatchPrizeTests {
     @ParameterizedTest
     void shouldReturnMatchPrizeWhenFindByMatchCount(int matchCount, MatchPrize expected) {
         if (matchCount < 0 || matchCount > 6) {
-            assertThatThrownBy(
-                            () -> {
-                                MatchPrize.findByMatchCount(matchCount);
-                            })
+            assertThatThrownBy(() -> MatchPrize.findByMatchCount(matchCount))
                     .isInstanceOf(IllegalArgumentException.class);
         } else {
             MatchPrize result = MatchPrize.findByMatchCount(matchCount);

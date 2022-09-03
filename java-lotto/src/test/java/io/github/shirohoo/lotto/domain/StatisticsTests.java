@@ -40,13 +40,13 @@ class StatisticsTests {
 
     @Test
     void shouldReturnProfitRate() {
-        // ...given
+        // given
         long purchaseAmount = 2_001_555_000L;
 
-        // ...when
+        // when
         double profitRate = statistics.profitRate(purchaseAmount);
 
-        // ...then
+        // then
         assertThat(profitRate).isEqualTo(1);
     }
 }

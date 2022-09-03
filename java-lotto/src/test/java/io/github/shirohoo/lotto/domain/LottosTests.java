@@ -14,27 +14,22 @@ import java.util.Set;
 class LottosTests {
     @Test
     void shouldNotThrownAnyExceptionWhenInit() {
-        assertThatCode(
-                        () -> {
-                            Lottos lottos = Lottos.from(Collections.emptyList());
-                        })
-                .doesNotThrowAnyException();
+        assertThatCode(() -> Lottos.from(Collections.emptyList())).doesNotThrowAnyException();
     }
 
     @Test
     void shouldReturnStringValue() {
-        // ...given
-        Lotto winningLotto = Lotto.from(Set.of(1, 2, 3, 4, 5, 6));
+        // given
         Lottos lottos =
                 Lottos.from(
                         List.of(
                                 Lotto.from(Set.of(1, 2, 3, 4, 5, 6)),
                                 Lotto.from(Set.of(40, 41, 42, 43, 44, 45))));
 
-        // ...when
+        // when
         String stringValue = lottos.stringValue();
 
-        // ...then
+        // then
         assertThat(stringValue)
                 .isEqualTo(
                         "[1, 2, 3, 4, 5, 6]%s[40, 41, 42, 43, 44, 45]".formatted(lineSeparator()));
@@ -42,7 +37,7 @@ class LottosTests {
 
     @Test
     void shouldDrawnNormally() {
-        // ...given
+        // given
         Lotto winningLotto = Lotto.from(Set.of(1, 2, 3, 4, 5, 6));
         Lottos lottos =
                 Lottos.from(
@@ -50,10 +45,10 @@ class LottosTests {
                                 Lotto.from(Set.of(1, 2, 3, 4, 5, 6)),
                                 Lotto.from(Set.of(40, 41, 42, 43, 44, 45))));
 
-        // ...when
+        // when
         Statistics statistics = lottos.drawn(winningLotto);
 
-        // ...then
+        // then
         assertThat(statistics.countOfWinningLotto(MatchPrize.SIX)).isEqualTo(1);
         assertThat(statistics.countOfWinningLotto(MatchPrize.ZERO)).isEqualTo(1);
     }

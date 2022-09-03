@@ -13,62 +13,55 @@ import org.junit.jupiter.params.provider.ValueSource;
 class LottoMachineTests {
     @Test
     void shouldNotThrownAnyExceptionWhenInit() {
-        assertThatCode(
-                        () -> {
-                            LottoMachine lottoMachine = new LottoMachine();
-                        })
-                .doesNotThrowAnyException();
+        assertThatCode(LottoMachine::new).doesNotThrowAnyException();
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"1,2,3,4,5,6", "1, 2, 3, 4, 5, 6"})
     void shouldReturnLottoFromStringNumbers(String winningNumbers) {
-        // ...given
+        // given
         LottoMachine lottoMachine = new LottoMachine();
 
-        // ...when
+        // when
         Lotto lotto = lottoMachine.ticketing(winningNumbers);
 
-        // ...then
+        // then
         assertThat(lotto).isNotNull().isInstanceOf(Lotto.class);
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     void shouldThrownExceptionWhenNullOrEmpty(String winningNumbers) {
-        // ...given
+        // given
         LottoMachine lottoMachine = new LottoMachine();
 
-        // ...when | then
-        assertThatThrownBy(
-                        () -> {
-                            Lotto lotto = lottoMachine.ticketing(winningNumbers);
-                        })
+        // when | then
+        assertThatThrownBy(() -> lottoMachine.ticketing(winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("winningNumbers cannot be null or empty");
     }
 
     @RepeatedTest(100)
     void shouldDrawnCorrectNumbersWhenTicketing() {
-        // ...given
+        // given
         LottoMachine lottoMachine = new LottoMachine();
 
-        // ...when
+        // when
         Lotto lotto = lottoMachine.ticketing();
 
-        // ...then
+        // then
         assertThat(lotto).isNotNull().isInstanceOf(Lotto.class);
     }
 
     @Test
     void shouldReturnLottosFromPurchaseOfNumber() {
-        // ...given
+        // given
         LottoMachine lottoMachine = new LottoMachine();
 
-        // ...when
+        // when
         Lottos lottos = lottoMachine.ticketing(10);
 
-        // ...then
+        // then
         assertThat(lottos).isNotNull().isInstanceOf(Lottos.class);
     }
 }

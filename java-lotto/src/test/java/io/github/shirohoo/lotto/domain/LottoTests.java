@@ -17,20 +17,13 @@ class LottoTests {
     void shouldNotThrownAnyExceptionWhenInit() {
         Set<Integer> numbers = Set.of(1, 2, 3, 4, 5, 6);
 
-        assertThatCode(
-                        () -> {
-                            Lotto lotto = Lotto.from(numbers);
-                        })
-                .doesNotThrowAnyException();
+        assertThatCode(() -> Lotto.from(numbers)).doesNotThrowAnyException();
     }
 
     @MethodSource
     @ParameterizedTest
     void shouldThrownExceptionWhenInit(Set<Integer> invalidNumbers) {
-        assertThatThrownBy(
-                        () -> {
-                            Lotto lotto = Lotto.from(invalidNumbers);
-                        })
+        assertThatThrownBy(() -> Lotto.from(invalidNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("lotto numbers must be not duplicated 6 numbers in range 1-45");
     }
@@ -47,13 +40,13 @@ class LottoTests {
     @MethodSource
     @ParameterizedTest
     void shouldDrawnNormally(Lotto lotto, MatchPrize expected) {
-        // ...given
+        // given
         Lotto winningLotto = Lotto.from(Set.of(1, 2, 3, 4, 5, 6));
 
-        // ...when
+        // when
         MatchPrize matchPrize = lotto.drawn(winningLotto);
 
-        // ...then
+        // then
         assertThat(matchPrize).isEqualTo(expected);
     }
 
@@ -70,13 +63,13 @@ class LottoTests {
 
     @Test
     void shouldReturnStringValue() {
-        // ...given
+        // given
         Lotto lotto = Lotto.from(Set.of(1, 2, 3, 4, 5, 6));
 
-        // ...when
+        // when
         String stringValue = lotto.stringValue();
 
-        // ...then
+        // then
         assertThat(stringValue).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
 }
