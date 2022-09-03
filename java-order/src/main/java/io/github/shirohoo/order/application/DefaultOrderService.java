@@ -1,22 +1,23 @@
-package io.github.shirohoo.app.port.in;
+package io.github.shirohoo.order.application;
 
-import io.github.shirohoo.app.domain.Order;
-import io.github.shirohoo.app.domain.Product;
-import io.github.shirohoo.app.domain.SoldOutException;
-import io.github.shirohoo.app.port.out.ProductPersistencePort;
+import io.github.shirohoo.order.domain.Order;
+import io.github.shirohoo.order.domain.OrderService;
+import io.github.shirohoo.order.domain.Product;
+import io.github.shirohoo.order.domain.ProductRepository;
+import io.github.shirohoo.order.domain.SoldOutException;
 
 import java.util.concurrent.Semaphore;
 import java.util.logging.Logger;
 
-public final class OrderUseCase implements OrderPort {
-    private static final Logger logger = Logger.getLogger(OrderUseCase.class.getName());
+public final class DefaultOrderService implements OrderService {
+    private static final Logger logger = Logger.getLogger(DefaultOrderService.class.getName());
 
     private final Semaphore semaphore;
-    private final ProductPersistencePort productPersistencePort;
+    private final ProductRepository productRepository;
 
-    public OrderUseCase(ProductPersistencePort productPersistencePort) {
+    public DefaultOrderService(ProductRepository productRepository) {
         this.semaphore = new Semaphore(1); // binary semaphore
-        this.productPersistencePort = productPersistencePort;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -25,10 +26,8 @@ public final class OrderUseCase implements OrderPort {
         // critical section
         try {
             semaphore.acquire();
-            if (productPersistencePort.existsById(order.id())) {
-                return productPersistencePort
-                        .updateByOrder(order)
-                        .orElseThrow(() -> notFound(order));
+            if (productRepository.existsById(order.id())) {
+                return productRepository.updateByOrder(order).orElseThrow(() -> notFound(order));
             }
             throw notFound(order);
 

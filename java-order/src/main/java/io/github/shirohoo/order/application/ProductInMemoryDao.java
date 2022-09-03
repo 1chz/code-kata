@@ -1,4 +1,4 @@
-package io.github.shirohoo.adapter.out.inmemory;
+package io.github.shirohoo.order.application;
 
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.collectingAndThen;
@@ -7,10 +7,10 @@ import static java.util.stream.Collectors.toMap;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
-import io.github.shirohoo.app.domain.Order;
-import io.github.shirohoo.app.domain.Product;
-import io.github.shirohoo.app.domain.Products;
-import io.github.shirohoo.app.port.out.ProductPersistencePort;
+import io.github.shirohoo.order.domain.Order;
+import io.github.shirohoo.order.domain.Product;
+import io.github.shirohoo.order.domain.ProductRepository;
+import io.github.shirohoo.order.domain.Products;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,13 +24,12 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
-public final class ProductInMemoryPersistenceAdapter implements ProductPersistencePort {
-    private static final Logger logger =
-            Logger.getLogger(ProductInMemoryPersistenceAdapter.class.getName());
+public final class ProductInMemoryDao implements ProductRepository {
+    private static final Logger logger = Logger.getLogger(ProductInMemoryDao.class.getName());
 
     private final Map<Long, Product> store;
 
-    public ProductInMemoryPersistenceAdapter(String csvPath) {
+    public ProductInMemoryDao(String csvPath) {
         if (csvPath.isBlank()) {
             throw new IllegalArgumentException(
                     "입력이 유효하지 않습니다. 입력 csvPath = '%s'".formatted(csvPath));

@@ -1,12 +1,12 @@
-package io.github.shirohoo.app.port.in;
+package io.github.shirohoo.order.application;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import io.github.shirohoo.adapter.out.inmemory.ProductInMemoryPersistenceAdapter;
-import io.github.shirohoo.app.domain.Order;
-import io.github.shirohoo.app.domain.Product;
-import io.github.shirohoo.app.port.out.ProductPersistencePort;
+import io.github.shirohoo.order.domain.Order;
+import io.github.shirohoo.order.domain.OrderService;
+import io.github.shirohoo.order.domain.Product;
+import io.github.shirohoo.order.domain.ProductRepository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -26,20 +26,20 @@ target = resources/items.csv -> {
     총수량 = 45
 }
 -----------------------------------------------------------------------*/
-class OrderUseCaseTests {
+class DefaultOrderServiceTests {
     static final int PRODUCT_ID = 768_848;
     static final int PRODUCT_UNIT_QUANTITY = 5;
     static final int PRODUCT_TOTAL_QUANTITY = 45;
 
-    OrderPort port;
+    OrderService port;
     ExecutorService executors;
     List<Order> successTask;
     List<Order> exceptionTask;
 
     @BeforeEach
     void setUp() {
-        ProductPersistencePort repository = new ProductInMemoryPersistenceAdapter("items.csv");
-        this.port = new OrderUseCase(repository);
+        ProductRepository repository = new ProductInMemoryDao("items.csv");
+        this.port = new DefaultOrderService(repository);
         this.executors = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         this.successTask =
                 Stream.generate(() -> Order.from(PRODUCT_ID, PRODUCT_UNIT_QUANTITY))

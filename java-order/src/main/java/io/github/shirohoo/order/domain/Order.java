@@ -1,4 +1,4 @@
-package io.github.shirohoo.app.domain;
+package io.github.shirohoo.order.domain;
 
 public final class Order {
     private final Product product;

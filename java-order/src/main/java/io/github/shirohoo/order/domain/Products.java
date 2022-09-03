@@ -1,4 +1,4 @@
-package io.github.shirohoo.app.domain;
+package io.github.shirohoo.order.domain;
 
 import java.util.Collection;
 import java.util.Collections;

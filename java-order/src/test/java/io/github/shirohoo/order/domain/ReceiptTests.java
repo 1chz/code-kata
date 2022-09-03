@@ -1,4 +1,4 @@
-package io.github.shirohoo.app.domain;
+package io.github.shirohoo.order.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;

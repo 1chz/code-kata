@@ -1,15 +1,11 @@
-package io.github.shirohoo.app;
+package io.github.shirohoo.order.application;
 
-import io.github.shirohoo.adapter.in.console.ConsoleInAdapter;
-import io.github.shirohoo.adapter.out.console.ConsoleOutAdapter;
-import io.github.shirohoo.adapter.out.inmemory.ProductInMemoryPersistenceAdapter;
-import io.github.shirohoo.app.domain.Order;
-import io.github.shirohoo.app.domain.Product;
-import io.github.shirohoo.app.domain.Products;
-import io.github.shirohoo.app.domain.Receipt;
-import io.github.shirohoo.app.port.in.OrderPort;
-import io.github.shirohoo.app.port.in.OrderUseCase;
-import io.github.shirohoo.app.port.out.ProductPersistencePort;
+import io.github.shirohoo.order.domain.Order;
+import io.github.shirohoo.order.domain.OrderService;
+import io.github.shirohoo.order.domain.Product;
+import io.github.shirohoo.order.domain.ProductRepository;
+import io.github.shirohoo.order.domain.Products;
+import io.github.shirohoo.order.domain.Receipt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +13,14 @@ import java.util.List;
 public final class ConsoleApp {
     private final ConsoleInAdapter consoleIn;
     private final ConsoleOutAdapter consoleOut;
-    private final ProductPersistencePort persistencePort;
-    private final OrderPort orderPort;
+    private final ProductRepository persistencePort;
+    private final OrderService orderService;
 
     private ConsoleApp(String csvPath) {
         this.consoleIn = new ConsoleInAdapter();
         this.consoleOut = new ConsoleOutAdapter();
-        this.persistencePort = new ProductInMemoryPersistenceAdapter(csvPath);
-        this.orderPort = new OrderUseCase(persistencePort);
+        this.persistencePort = new ProductInMemoryDao(csvPath);
+        this.orderService = new DefaultOrderService(persistencePort);
     }
 
     public static ConsoleApp init(String csvPath) {
@@ -56,12 +52,17 @@ public final class ConsoleApp {
 
             try {
                 Order order = Order.from(Long.parseLong(id), Integer.parseInt(quantity));
-                Product take = orderPort.order(order);
+                Product take = orderService.order(order);
                 products.add(take);
             } catch (Exception e) {
                 consoleOut.exceptionCaught(e);
             }
         }
         return Receipt.from(Products.from(products));
+    }
+
+    public static void main(String[] args) {
+        String csvPath = "items.csv";
+        ConsoleApp.init(csvPath).run();
     }
 }

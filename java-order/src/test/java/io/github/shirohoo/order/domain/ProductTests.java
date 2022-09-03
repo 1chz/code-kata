@@ -1,18 +1,18 @@
-package io.github.shirohoo.app.domain;
-
-import static io.github.shirohoo.fixture.TestDataProvider.INVALID_ID_QUANTITY_FOR_PRODUCT;
-import static io.github.shirohoo.fixture.TestDataProvider.INVALID_LIST_FOR_PRODUCT;
+package io.github.shirohoo.order.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 class ProductTests {
     @Test
@@ -27,15 +27,27 @@ class ProductTests {
     }
 
     @ParameterizedTest
-    @MethodSource(INVALID_LIST_FOR_PRODUCT)
+    @MethodSource("invalidListForProduct")
     void from_입력이_유효하지_않으면_인스턴스가_생성되지_않는다(List<String> row) {
         assertThatThrownBy(() -> Product.from(row)).isInstanceOf(Exception.class);
     }
 
+    public static Stream<Arguments> invalidListForProduct() {
+        return Stream.of(
+                arguments(List.of("-1", "name", "1000", "0")),
+                arguments(List.of("0", "", "1000", "0")),
+                arguments(List.of("0", "name", "-1", "0")),
+                arguments(List.of("0", "name", "1000", "-1")));
+    }
+
     @ParameterizedTest
-    @MethodSource(INVALID_ID_QUANTITY_FOR_PRODUCT)
+    @MethodSource("invalidArgsForProduct")
     void of_입력이_유효하지_않으면_인스턴스가_생성되지_않는다(long id, int quantity) {
         assertThatThrownBy(() -> Product.of(id, quantity)).isInstanceOf(Exception.class);
+    }
+
+    public static Stream<Arguments> invalidArgsForProduct() {
+        return Stream.of(arguments(-1, 1), arguments(1, -1));
     }
 
     @Test

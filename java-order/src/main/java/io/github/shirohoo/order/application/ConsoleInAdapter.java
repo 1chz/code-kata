@@ -1,4 +1,4 @@
-package io.github.shirohoo.adapter.in.console;
+package io.github.shirohoo.order.application;
 
 import java.util.Scanner;
 

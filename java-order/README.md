@@ -21,23 +21,3 @@
 - 동시 요청시 `SoldOutException`이 발생하는지 확인하는 테스트가 작성되어야 한다
 
 <br />
-
-## Architecture
-
----
-
-![image](https://user-images.githubusercontent.com/71188307/159008061-4f047fb1-3a7d-492d-beb3-a22c76fc661a.png)
-
-<br />
-
-![image](https://user-images.githubusercontent.com/71188307/159012570-8ed09ace-a8ec-4be6-b6bc-9c238c7625cf.png)
-
-<br />
-
-## Test Cases
-
----
-
-![image](https://user-images.githubusercontent.com/71188307/159008111-751eecc2-4649-480a-9ae1-f0c058e88891.JPG)
-
-<br />
