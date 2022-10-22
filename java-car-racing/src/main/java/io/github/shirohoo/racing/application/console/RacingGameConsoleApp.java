@@ -1,10 +1,8 @@
-package io.github.shirohoo;
+package io.github.shirohoo.racing.application.console;
 
-import io.github.shirohoo.racing.adapter.in.console.ConsoleInputAdapter;
-import io.github.shirohoo.racing.adapter.out.console.ConsoleOutputAdapter;
-import io.github.shirohoo.racing.app.domain.RacingGameSettings;
-import io.github.shirohoo.racing.app.domain.RandomForwardCondition;
-import io.github.shirohoo.racing.app.usecase.RacingGameRunner;
+import io.github.shirohoo.racing.domain.RacingGameRunner;
+import io.github.shirohoo.racing.domain.RacingGameSettings;
+import io.github.shirohoo.racing.domain.RandomForwardCondition;
 
 public class RacingGameConsoleApp {
     public static void main(String[] args) {

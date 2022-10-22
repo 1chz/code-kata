@@ -1,6 +1,4 @@
-package io.github.shirohoo.racing.app.port.out;
-
-import io.github.shirohoo.racing.app.domain.Car;
+package io.github.shirohoo.racing.domain;
 
 import java.util.List;
 

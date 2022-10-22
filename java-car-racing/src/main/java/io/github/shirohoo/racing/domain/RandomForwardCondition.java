@@ -1,4 +1,4 @@
-package io.github.shirohoo.racing.app.domain;
+package io.github.shirohoo.racing.domain;
 
 import java.util.random.RandomGenerator;
 
@@ -7,6 +7,7 @@ public class RandomForwardCondition implements ForwardCondition {
 
     @Override
     public boolean get() {
-        return RANDOM_GENERATOR.nextInt(10) >= 4;
+        int forwardCondition = 4;
+        return RANDOM_GENERATOR.nextInt(10) >= forwardCondition;
     }
 }

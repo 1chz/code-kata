@@ -1,4 +1,4 @@
-package io.github.shirohoo.racing.app.domain;
+package io.github.shirohoo.racing.domain;
 
 import static java.util.Arrays.stream;
 
@@ -19,7 +19,8 @@ public record RacingGameSettings(String carNames, int tryCount, ForwardCondition
     }
 
     private void assertThatConditions(String carNames, int tryCount) {
-        if (carNames.isBlank() || tryCount < 1) {
+        int minimumNumberOfAttempts = 1;
+        if (carNames.isBlank() || tryCount < minimumNumberOfAttempts) {
             throw new IllegalArgumentException();
         }
     }

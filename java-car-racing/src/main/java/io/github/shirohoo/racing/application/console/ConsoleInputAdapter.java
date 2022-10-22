@@ -1,4 +1,4 @@
-package io.github.shirohoo.racing.adapter.in.console;
+package io.github.shirohoo.racing.application.console;
 
 import java.util.Scanner;
 

@@ -1,11 +1,8 @@
-package io.github.shirohoo.racing.app.usecase;
+package io.github.shirohoo.racing.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import io.github.shirohoo.racing.app.domain.Car;
-import io.github.shirohoo.racing.app.domain.RacingGameSettings;
 
 import org.junit.jupiter.api.Test;
 

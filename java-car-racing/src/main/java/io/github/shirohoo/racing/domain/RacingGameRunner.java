@@ -1,12 +1,6 @@
-package io.github.shirohoo.racing.app.usecase;
+package io.github.shirohoo.racing.domain;
 
 import static java.util.stream.IntStream.rangeClosed;
-
-import io.github.shirohoo.racing.app.domain.Car;
-import io.github.shirohoo.racing.app.domain.Cars;
-import io.github.shirohoo.racing.app.domain.ForwardCondition;
-import io.github.shirohoo.racing.app.domain.RacingGameSettings;
-import io.github.shirohoo.racing.app.port.out.RacingGame;
 
 import java.util.List;
 import java.util.Objects;

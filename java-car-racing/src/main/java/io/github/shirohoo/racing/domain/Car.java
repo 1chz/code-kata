@@ -1,4 +1,4 @@
-package io.github.shirohoo.racing.app.domain;
+package io.github.shirohoo.racing.domain;
 
 import java.util.Objects;
 
@@ -27,10 +27,7 @@ public class Car {
     }
 
     public int forward(ForwardCondition condition) {
-        if (condition.get()) {
-            return ++position;
-        }
-        return position;
+        return condition.get() ? ++position : position;
     }
 
     public String name() {
@@ -42,14 +39,14 @@ public class Car {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object other) {
+        if (this == other) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (other == null || getClass() != other.getClass()) {
             return false;
         }
-        Car car = (Car) o;
+        Car car = (Car) other;
         return position == car.position && Objects.equals(name, car.name);
     }
 

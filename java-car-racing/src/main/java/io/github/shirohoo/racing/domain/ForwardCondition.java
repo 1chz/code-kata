@@ -1,4 +1,4 @@
-package io.github.shirohoo.racing.app.domain;
+package io.github.shirohoo.racing.domain;
 
 @FunctionalInterface
 public interface ForwardCondition {

@@ -1,4 +1,4 @@
-package io.github.shirohoo.racing.app.domain;
+package io.github.shirohoo.racing.domain;
 
 import static java.util.Arrays.stream;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Cars {
+public final class Cars {
     private final Collection<Car> cars;
 
     private Cars(String cars) {
