@@ -4,14 +4,11 @@ import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
-import java.util.Set;
 import java.util.random.RandomGenerator;
 import java.util.random.RandomGeneratorFactory;
 import java.util.stream.LongStream;
 
 public class LottoMachine {
-    private static final String SPLIT_REGEX = ",";
-
     private final RandomGenerator randomGenerator;
 
     public LottoMachine() {
@@ -30,14 +27,11 @@ public class LottoMachine {
     }
 
     private String[] cleaning(String winningNumbers) {
-        return winningNumbers.replace(" ", "").split(SPLIT_REGEX);
+        return winningNumbers.replace(" ", "").split(",");
     }
 
     public Lotto ticketing() {
-        Set<Integer> randomNumbers =
-                randomGenerator.ints(1, 46).distinct().limit(6).boxed().collect(toSet());
-
-        return Lotto.from(randomNumbers);
+        return Lotto.from(randomGenerator.ints(1, 46).distinct().limit(6).boxed().collect(toSet()));
     }
 
     public Lottos ticketing(long purchaseOfNumber) {

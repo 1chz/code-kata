@@ -10,7 +10,8 @@ public class Lotto {
     private final Set<Integer> numbers;
 
     private Lotto(Set<Integer> numbers) {
-        if (numbers.size() != 6 || isNotRanged(numbers)) {
+        int lottoIsSixNumbers = 6;
+        if (numbers.size() != lottoIsSixNumbers || isNotRanged(numbers)) {
             throw new IllegalArgumentException(
                     "lotto numbers must be not duplicated 6 numbers in range 1-45");
         }

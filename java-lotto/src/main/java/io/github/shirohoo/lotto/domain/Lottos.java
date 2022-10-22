@@ -9,6 +9,8 @@ import static java.util.stream.Collectors.joining;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
 
 public class Lottos {
     private final List<Lotto> lottos;
@@ -26,12 +28,10 @@ public class Lottos {
     }
 
     public Statistics drawn(Lotto winningLotto) {
+        Collector<MatchPrize, Object, Map<MatchPrize, Long>> collector =
+                collectingAndThen(groupingBy(identity(), counting()), Collections::unmodifiableMap);
+
         return Statistics.from(
-                lottos.stream()
-                        .map(lotto -> lotto.drawn(winningLotto))
-                        .collect(
-                                collectingAndThen(
-                                        groupingBy(identity(), counting()),
-                                        Collections::unmodifiableMap)));
+                lottos.stream().map(lotto -> lotto.drawn(winningLotto)).collect(collector));
     }
 }

@@ -7,6 +7,7 @@ import static java.util.stream.Collectors.toMap;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.stream.Collector;
 
 public enum MatchPrize {
     SIX(6, 2_000_000_000),
@@ -17,12 +18,15 @@ public enum MatchPrize {
     ONE(1, 0),
     ZERO(0, 0);
 
-    private static final Map<Integer, MatchPrize> map =
-            stream(values())
-                    .collect(
-                            collectingAndThen(
-                                    toMap(MatchPrize::matchCount, identity()),
-                                    Collections::unmodifiableMap));
+    private static final Map<Integer, MatchPrize> map;
+
+    static {
+        Collector<MatchPrize, Object, Map<Integer, MatchPrize>> collector =
+                collectingAndThen(
+                        toMap(MatchPrize::matchCount, identity()), Collections::unmodifiableMap);
+
+        map = stream(values()).collect(collector);
+    }
 
     private final int matchCount;
     private final int prize;
@@ -33,7 +37,9 @@ public enum MatchPrize {
     }
 
     public static MatchPrize findByMatchCount(int matchCount) {
-        if (matchCount < 0 || matchCount > 6) {
+        int minMatchCount = 0;
+        int maxMatchCount = 6;
+        if (matchCount < minMatchCount || matchCount > maxMatchCount) {
             throw new IllegalArgumentException();
         }
         return map.getOrDefault(matchCount, MatchPrize.ZERO);
