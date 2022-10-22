@@ -16,20 +16,17 @@ final class Alarms {
     }
 
     public void registry(Time time) {
-        try {
-            times.add(time);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            // do nothing...
-        }
+        //        try {
+        times.add(time);
+        //        } catch (Exception e) {
+        //            System.out.println(e.getMessage());
+        // do nothing...
+        //        }
 
         System.out.println("Current alarms = " + times);
     }
 
     public Optional<Time> timeFor(Time time) {
-        if (times.removeIf(it -> it.equals(time))) {
-            return Optional.of(time);
-        }
-        return Optional.empty();
+        return times.removeIf(time::equals) ? Optional.of(time) : Optional.empty();
     }
 }

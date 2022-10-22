@@ -3,6 +3,7 @@ package io.github.shirohoo;
 import java.util.Scanner;
 
 public class ConsoleRunner {
+    @SuppressWarnings("InfiniteLoopStatement")
     public static void main(String[] args) {
         Alarms alarms = new Alarms();
         AlarmExecutor executor = new AlarmExecutor(alarms);

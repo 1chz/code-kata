@@ -8,13 +8,11 @@ final class AlarmExecutor extends Thread {
     }
 
     @Override
+    @SuppressWarnings("InfiniteLoopStatement")
     public void run() {
         while (true) {
             alarms.timeFor(Clock.currentTime())
-                    .ifPresent(
-                            it -> {
-                                System.out.println("beep beep beep beep beep");
-                            });
+                    .ifPresent(it -> System.out.println("beep beep beep beep beep"));
         }
     }
 }
