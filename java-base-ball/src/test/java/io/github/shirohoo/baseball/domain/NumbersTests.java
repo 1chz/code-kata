@@ -16,28 +16,23 @@ import java.util.stream.Stream;
 
 class NumbersTests {
     @Test
-    void 중복되지않는_숫자_세개() {
+    void shouldPassIfEnteredNonDuplicated3Numbers() {
         assertThatCode(() -> new Numbers("123")).doesNotThrowAnyException();
     }
 
     @Test
-    void 중복되지않는_숫자_세개_예외() {
+    void shouldPassIfEnteredDuplicated3Numbers() {
         assertThatThrownBy(() -> new Numbers("111")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void 입력이_null_이면_예외() {
+    void shouldPassIfEnteredNull() {
         assertThatThrownBy(() -> new Numbers(null)).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void 중복되지않는_랜덤한_숫자_세개() {
-        assertThatCode(Numbers::new).doesNotThrowAnyException();
     }
 
     @ParameterizedTest
     @MethodSource("provideCases")
-    void 숫자를_입력받으면_비교결과를_반환한다(Numbers other, Score expected) {
+    void shouldReturnScoreComparingTwoNumbers(Numbers other, Score expected) {
         // given
         Numbers self = new Numbers("123");
 

@@ -32,9 +32,7 @@ public final class Numbers {
     }
 
     public Score compareTo(Numbers other) {
-        if (other == null) {
-            throw new IllegalArgumentException("입력이 null일 수 없습니다");
-        }
+        Objects.requireNonNull(other, "입력이 null일 수 없습니다");
 
         char[] self = val.toCharArray();
         char[] that = other.val.toCharArray();
@@ -48,7 +46,7 @@ public final class Numbers {
                 continue;
             }
             for (int j = 0; j < 3; j++) {
-                if (that[j] == self[i]) {
+                if (self[i] == that[j]) {
                     ballCount++;
                     break;
                 }
@@ -72,6 +70,6 @@ public final class Numbers {
 
     @Override
     public String toString() {
-        return "Numbers[" + "val=" + val + ']';
+        return "Numbers[val=%s]".formatted(val);
     }
 }
