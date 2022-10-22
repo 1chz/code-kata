@@ -12,9 +12,12 @@ public final class Order {
             throw new IllegalArgumentException(
                     "상품번호는 음수일 수 없습니다. 현재 입력 된 상품번호 = '%d'".formatted(id));
         }
-        if (quantity < 1) {
+
+        int minimumOrderQuantity = 1;
+        if (quantity < minimumOrderQuantity) {
             throw new IllegalArgumentException(
-                    "주문수량은 1보다 작을 수 없습니다. 현재 입력 된 주문수량 = '%d'".formatted(quantity));
+                    "주문수량은 반드시 %d개 이상이어야 합니다. 현재 입력 된 주문수량 = '%d'"
+                            .formatted(minimumOrderQuantity, quantity));
         }
         return new Order(id, quantity);
     }

@@ -1,10 +1,4 @@
-package io.github.shirohoo.order.application;
-
-import io.github.shirohoo.order.domain.Order;
-import io.github.shirohoo.order.domain.OrderService;
-import io.github.shirohoo.order.domain.Product;
-import io.github.shirohoo.order.domain.ProductRepository;
-import io.github.shirohoo.order.domain.SoldOutException;
+package io.github.shirohoo.order.domain;
 
 import java.util.concurrent.Semaphore;
 import java.util.logging.Logger;
@@ -21,15 +15,17 @@ public final class DefaultOrderService implements OrderService {
     }
 
     @Override
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
     public Product order(Order order)
             throws InterruptedException, SoldOutException, IllegalArgumentException {
         // critical section
         try {
             semaphore.acquire();
-            if (productRepository.existsById(order.id())) {
-                return productRepository.updateByOrder(order).orElseThrow(() -> notFound(order));
+            long orderId = order.id();
+            if (productRepository.existsById(orderId)) {
+                return productRepository.updateByOrder(order).get();
             }
-            throw notFound(order);
+            throw new IllegalArgumentException("상품번호 '%s'는 없는 항목입니다".formatted(orderId));
 
         } catch (Exception o_O) { // implicit upper type casting
             logger.info(o_O.getMessage());
@@ -38,9 +34,5 @@ public final class DefaultOrderService implements OrderService {
         } finally {
             semaphore.release();
         }
-    }
-
-    private IllegalArgumentException notFound(Order order) {
-        return new IllegalArgumentException("상품번호 '%s'는 없는 항목입니다".formatted(order.id()));
     }
 }

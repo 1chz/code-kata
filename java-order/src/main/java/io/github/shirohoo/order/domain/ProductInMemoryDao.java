@@ -1,4 +1,4 @@
-package io.github.shirohoo.order.application;
+package io.github.shirohoo.order.domain;
 
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.collectingAndThen;
@@ -6,11 +6,6 @@ import static java.util.stream.Collectors.toMap;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-
-import io.github.shirohoo.order.domain.Order;
-import io.github.shirohoo.order.domain.Product;
-import io.github.shirohoo.order.domain.ProductRepository;
-import io.github.shirohoo.order.domain.Products;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,6 +18,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
+import java.util.stream.Collector;
 
 public final class ProductInMemoryDao implements ProductRepository {
     private static final Logger logger = Logger.getLogger(ProductInMemoryDao.class.getName());
@@ -34,11 +30,11 @@ public final class ProductInMemoryDao implements ProductRepository {
             throw new IllegalArgumentException(
                     "입력이 유효하지 않습니다. 입력 csvPath = '%s'".formatted(csvPath));
         }
-        this.store =
-                parseCsv(csvPath).stream()
-                        .collect(
-                                collectingAndThen(
-                                        toMap(Product::id, identity()), ConcurrentHashMap::new));
+
+        Collector<Product, Object, ConcurrentHashMap<Long, Product>> collector =
+                collectingAndThen(toMap(Product::id, identity()), ConcurrentHashMap::new);
+
+        this.store = parseCsv(csvPath).stream().collect(collector);
     }
 
     private List<Product> parseCsv(String csvPath) {
@@ -75,9 +71,7 @@ public final class ProductInMemoryDao implements ProductRepository {
     @Override
     public Optional<Product> findByOrder(Order order) {
         long clusterKey = order.id();
-        return store.containsKey(clusterKey)
-                ? Optional.of(store.get(clusterKey))
-                : Optional.empty();
+        return Optional.ofNullable(store.get(clusterKey));
     }
 
     @Override

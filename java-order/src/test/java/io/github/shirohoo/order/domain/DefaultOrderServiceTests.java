@@ -1,12 +1,7 @@
-package io.github.shirohoo.order.application;
+package io.github.shirohoo.order.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import io.github.shirohoo.order.domain.Order;
-import io.github.shirohoo.order.domain.OrderService;
-import io.github.shirohoo.order.domain.Product;
-import io.github.shirohoo.order.domain.ProductRepository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;

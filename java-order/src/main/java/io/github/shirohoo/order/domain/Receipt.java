@@ -3,7 +3,6 @@ package io.github.shirohoo.order.domain;
 import java.util.stream.Stream;
 
 public final class Receipt {
-    private static final int DELIVERY_FEE_THRESHOLD = 50_000;
     public static final int DELIVERY_FEE = 2_500;
 
     private final Products products;
@@ -25,10 +24,8 @@ public final class Receipt {
     }
 
     public long deliveryFee() {
-        if (orderAmount() < DELIVERY_FEE_THRESHOLD) {
-            return DELIVERY_FEE;
-        }
-        return 0;
+        int deliveryFeeThreshold = 50_000;
+        return orderAmount() < deliveryFeeThreshold ? DELIVERY_FEE : 0;
     }
 
     public long paymentAmount() {
