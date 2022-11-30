@@ -1,9 +1,9 @@
 package io.github.shirohoo.application;
 
+
 import io.github.shirohoo.domain.Computer;
 import io.github.shirohoo.domain.Numbers;
 import io.github.shirohoo.domain.Score;
-
 import java.util.Scanner;
 
 public class Console {

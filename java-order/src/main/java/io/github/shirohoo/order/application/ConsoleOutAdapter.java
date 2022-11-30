@@ -5,7 +5,6 @@ import static java.util.stream.Collectors.joining;
 import io.github.shirohoo.order.domain.Product;
 import io.github.shirohoo.order.domain.Products;
 import io.github.shirohoo.order.domain.Receipt;
-
 import java.text.DecimalFormat;
 import java.util.function.Consumer;
 

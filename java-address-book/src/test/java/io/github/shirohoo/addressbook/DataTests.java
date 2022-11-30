@@ -2,9 +2,8 @@ package io.github.shirohoo.addressbook;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.UUID;
+import org.junit.jupiter.api.Test;
 
 class DataTests {
     @Test

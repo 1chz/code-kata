@@ -1,5 +1,0 @@
-repos:
-  - repo: https://github.com/shirohoo/google-style-precommit-hook
-    rev: v1.0.0 # latest version
-    hooks:
-      - id: google-style-java

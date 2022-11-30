@@ -1,15 +1,13 @@
 package io.github.shirohoo.lotto.domain;
 
+import static java.lang.System.lineSeparator;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
-
-import static java.lang.System.lineSeparator;
-
-import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import org.junit.jupiter.api.Test;
 
 class LottosTests {
     @Test

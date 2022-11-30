@@ -1,5 +1,6 @@
 package io.github.shirohoo.order.domain;
 
+
 import java.util.concurrent.Semaphore;
 import java.util.logging.Logger;
 

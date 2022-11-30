@@ -1,5 +1,6 @@
 package io.github.shirohoo.lotto.domain;
 
+
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;

@@ -1,5 +1,6 @@
 package io.github.shirohoo.order.domain;
 
+
 import java.util.stream.Stream;
 
 public final class Receipt {

@@ -1,8 +1,14 @@
 rootProject.name = "code-kata"
 
-val projectNames = rootDir.listFiles()!!
-    .filter { it.isDirectory }
-    .map { it.name }
-    .filter { it.contains("(java|kt)".toRegex()) }
-
-include(projectNames)
+include(
+    "java-address-book",
+    "java-alarm-clock",
+    "java-base-ball",
+    "java-car-racing",
+    "java-lotto",
+    "java-order",
+    "java-string-calculator",
+    "kt-base-ball",
+    "kt-ghost-leg",
+    "kt-string-calculator",
+)

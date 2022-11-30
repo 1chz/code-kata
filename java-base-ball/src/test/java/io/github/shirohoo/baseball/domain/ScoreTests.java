@@ -3,7 +3,6 @@ package io.github.shirohoo.baseball.domain;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.github.shirohoo.domain.Score;
-
 import org.junit.jupiter.api.Test;
 
 class ScoreTests {

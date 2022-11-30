@@ -1,5 +1,6 @@
 package io.github.shirohoo.racing.application.console;
 
+
 import io.github.shirohoo.racing.domain.RacingGameRunner;
 import io.github.shirohoo.racing.domain.RacingGameSettings;
 import io.github.shirohoo.racing.domain.RandomForwardCondition;

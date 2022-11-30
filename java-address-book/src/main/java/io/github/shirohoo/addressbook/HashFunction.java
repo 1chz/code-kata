@@ -1,5 +1,6 @@
 package io.github.shirohoo.addressbook;
 
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

@@ -1,5 +1,6 @@
 package io.github.shirohoo.lotto.domain;
 
+
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.ToIntFunction;

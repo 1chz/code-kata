@@ -4,7 +4,6 @@ import static java.util.stream.Collectors.joining;
 
 import io.github.shirohoo.racing.domain.Car;
 import io.github.shirohoo.racing.domain.RacingGame;
-
 import java.util.List;
 
 public class ConsoleOutputAdapter {
