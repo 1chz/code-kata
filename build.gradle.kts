@@ -45,12 +45,16 @@ allprojects {
 
     spotless {
         java {
-            target("**/*.java")
-            googleJavaFormat().aosp()
+            // parser
+            palantirJavaFormat()
+
+            // options
+            target("src/main/java/**/*.java", "src/main/test/**/*.java")
+            formatAnnotations()
             importOrder()
             removeUnusedImports()
             trimTrailingWhitespace()
-            endWithNewline()
+            indentWithSpaces(4)
         }
     }
 }

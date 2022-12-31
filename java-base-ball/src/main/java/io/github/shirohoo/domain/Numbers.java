@@ -9,13 +9,12 @@ public final class Numbers {
     private final String val;
 
     public Numbers() {
-        this(
-                RandomGenerator.getDefault()
-                        .ints(1, 10)
-                        .distinct()
-                        .limit(3)
-                        .mapToObj(String::valueOf)
-                        .collect(joining()));
+        this(RandomGenerator.getDefault()
+                .ints(1, 10)
+                .distinct()
+                .limit(3)
+                .mapToObj(String::valueOf)
+                .collect(joining()));
     }
 
     public Numbers(String val) {

@@ -58,14 +58,8 @@ public final class ConsoleOutAdapter {
     }
 
     private Consumer<Product> printTable() {
-        return product ->
-                println(
-                        toFullWidth(
-                                TABLE_FORMAT.formatted(
-                                        product.id(),
-                                        product.name(),
-                                        DECIMAL_FORMAT.format(product.price()),
-                                        product.quantity())));
+        return product -> println(toFullWidth(TABLE_FORMAT.formatted(
+                product.id(), product.name(), DECIMAL_FORMAT.format(product.price()), product.quantity())));
     }
 
     public void id() {
@@ -78,29 +72,23 @@ public final class ConsoleOutAdapter {
 
     public void orderHistory(Receipt receipt) {
         if (receipt.isSeparateDeliveryFee()) {
-            println(
-                    ORDER_HISTORY_WITH_DELIVERY_FEE_MESSAGE.formatted(
-                            productList(receipt),
-                            DECIMAL_FORMAT.format(receipt.orderAmount()),
-                            DECIMAL_FORMAT.format(receipt.deliveryFee()),
-                            DECIMAL_FORMAT.format(receipt.paymentAmount())));
+            println(ORDER_HISTORY_WITH_DELIVERY_FEE_MESSAGE.formatted(
+                    productList(receipt),
+                    DECIMAL_FORMAT.format(receipt.orderAmount()),
+                    DECIMAL_FORMAT.format(receipt.deliveryFee()),
+                    DECIMAL_FORMAT.format(receipt.paymentAmount())));
             return;
         }
 
-        println(
-                ORDER_HISTORY_MESSAGE.formatted(
-                        productList(receipt),
-                        DECIMAL_FORMAT.format(receipt.orderAmount()),
-                        DECIMAL_FORMAT.format(receipt.paymentAmount())));
+        println(ORDER_HISTORY_MESSAGE.formatted(
+                productList(receipt),
+                DECIMAL_FORMAT.format(receipt.orderAmount()),
+                DECIMAL_FORMAT.format(receipt.paymentAmount())));
     }
 
     private String productList(Receipt receipt) {
         return receipt.stream()
-                .map(
-                        product ->
-                                String.format(
-                                        "%s - %s개%s",
-                                        product.name(), product.quantity(), LINE_SEPARATOR))
+                .map(product -> String.format("%s - %s개%s", product.name(), product.quantity(), LINE_SEPARATOR))
                 .collect(joining())
                 .stripTrailing();
     }

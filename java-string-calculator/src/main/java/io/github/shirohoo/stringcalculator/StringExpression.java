@@ -15,15 +15,13 @@ public final class StringExpression {
 
         expr = expr.replace(" ", "");
         if (expr.contains("/0")) {
-            throw new IllegalArgumentException(
-                    "You can't divide by zero because it causes an infinite loop.");
+            throw new IllegalArgumentException("You can't divide by zero because it causes an infinite loop.");
         }
 
         this.expr = expr;
     }
 
     public ArrayDeque<String> split() {
-        return stream(expr.replaceAll("(\\d)([+\\-*/])", "$1 $2 ").split(" "))
-                .collect(toCollection(ArrayDeque::new));
+        return stream(expr.replaceAll("(\\d)([+\\-*/])", "$1 $2 ").split(" ")).collect(toCollection(ArrayDeque::new));
     }
 }

@@ -16,15 +16,14 @@ public class Main {
 
     private static void write(FileManager fileManager, int count) {
         for (int i = 0; i < count; i++) {
-            Data data =
-                    Data.builder()
-                            .id(UUID.randomUUID())
-                            .name(i + "")
-                            .gender("M")
-                            .age(1)
-                            .phoneNumber("010-1234-5678")
-                            .address("Korea")
-                            .build();
+            Data data = Data.builder()
+                    .id(UUID.randomUUID())
+                    .name(i + "")
+                    .gender("M")
+                    .age(1)
+                    .phoneNumber("010-1234-5678")
+                    .address("Korea")
+                    .build();
 
             fileManager.save(data);
         }

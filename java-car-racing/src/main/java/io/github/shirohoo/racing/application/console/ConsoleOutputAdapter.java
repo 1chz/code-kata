@@ -29,8 +29,7 @@ public class ConsoleOutputAdapter {
         for (Car car : cars) {
             String carName = car.name();
             int currentPosition = car.currentPosition();
-            sb.append(
-                    String.format("%s : %s%s", carName, convertSymbol(currentPosition), NEW_LINE));
+            sb.append(String.format("%s : %s%s", carName, convertSymbol(currentPosition), NEW_LINE));
         }
         sb.append(NEW_LINE);
     }

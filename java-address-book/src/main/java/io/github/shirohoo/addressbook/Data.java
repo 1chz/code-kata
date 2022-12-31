@@ -12,8 +12,7 @@ public final class Data {
     public final String phoneNumber;
     public final String address;
 
-    private Data(
-            String id, String name, String gender, int age, String phoneNumber, String address) {
+    private Data(String id, String name, String gender, int age, String phoneNumber, String address) {
         this.id = id;
         this.name = name;
         this.gender = gender;

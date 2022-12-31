@@ -20,7 +20,10 @@ public enum ArithmeticOperator {
     }
 
     public static ArithmeticOperator findByOperator(char operator) {
-        return stream(values()).filter(it -> it.operator == operator).findFirst().orElseThrow();
+        return stream(values())
+                .filter(it -> it.operator == operator)
+                .findFirst()
+                .orElseThrow();
     }
 
     public double apply(double left, double right) {

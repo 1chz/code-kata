@@ -13,8 +13,7 @@ public class Lotto {
     private Lotto(Set<Integer> numbers) {
         int lottoIsSixNumbers = 6;
         if (numbers.size() != lottoIsSixNumbers || isNotRanged(numbers)) {
-            throw new IllegalArgumentException(
-                    "lotto numbers must be not duplicated 6 numbers in range 1-45");
+            throw new IllegalArgumentException("lotto numbers must be not duplicated 6 numbers in range 1-45");
         }
         this.numbers = new TreeSet<>(numbers);
     }
@@ -41,11 +40,10 @@ public class Lotto {
     }
 
     private int matchCount(Lotto target, Lotto winningLotto) {
-        long matchCount =
-                target.numbers.stream()
-                        .mapToInt(unboxed())
-                        .filter(winningLotto.numbers::contains)
-                        .count();
+        long matchCount = target.numbers.stream()
+                .mapToInt(unboxed())
+                .filter(winningLotto.numbers::contains)
+                .count();
 
         return Math.toIntExact(matchCount);
     }

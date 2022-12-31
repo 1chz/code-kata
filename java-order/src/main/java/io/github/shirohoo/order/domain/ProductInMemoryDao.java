@@ -26,8 +26,7 @@ public final class ProductInMemoryDao implements ProductRepository {
 
     public ProductInMemoryDao(String csvPath) {
         if (csvPath.isBlank()) {
-            throw new IllegalArgumentException(
-                    "입력이 유효하지 않습니다. 입력 csvPath = '%s'".formatted(csvPath));
+            throw new IllegalArgumentException("입력이 유효하지 않습니다. 입력 csvPath = '%s'".formatted(csvPath));
         }
 
         Collector<Product, Object, ConcurrentHashMap<Long, Product>> collector =
@@ -37,8 +36,8 @@ public final class ProductInMemoryDao implements ProductRepository {
     }
 
     private List<Product> parseCsv(String csvPath) {
-        String absolutePath =
-                Objects.requireNonNull(getClass().getClassLoader().getResource(csvPath)).getPath();
+        String absolutePath = Objects.requireNonNull(getClass().getClassLoader().getResource(csvPath))
+                .getPath();
 
         List<List<String>> records = new ArrayList<>(30);
         try (CSVReader csvReader = new CSVReader(new FileReader(absolutePath))) {
@@ -80,12 +79,10 @@ public final class ProductInMemoryDao implements ProductRepository {
 
     @Override
     public Optional<Product> updateByOrder(Order order) {
-        return findByOrder(order)
-                .map(
-                        storeItem -> {
-                            Product take = Product.take(order, storeItem);
-                            store.put(storeItem.id(), storeItem.decreaseQuantity(order));
-                            return take;
-                        });
+        return findByOrder(order).map(storeItem -> {
+            Product take = Product.take(order, storeItem);
+            store.put(storeItem.id(), storeItem.decreaseQuantity(order));
+            return take;
+        });
     }
 }

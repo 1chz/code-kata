@@ -19,11 +19,10 @@ public class LottoMachine {
         if (winningNumbers == null || winningNumbers.isEmpty()) {
             throw new IllegalArgumentException("winningNumbers cannot be null or empty");
         }
-        return Lotto.from(
-                stream(cleaning(winningNumbers))
-                        .mapToInt(Integer::parseInt)
-                        .boxed()
-                        .collect(toSet()));
+        return Lotto.from(stream(cleaning(winningNumbers))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .collect(toSet()));
     }
 
     private String[] cleaning(String winningNumbers) {
@@ -31,13 +30,13 @@ public class LottoMachine {
     }
 
     public Lotto ticketing() {
-        return Lotto.from(randomGenerator.ints(1, 46).distinct().limit(6).boxed().collect(toSet()));
+        return Lotto.from(
+                randomGenerator.ints(1, 46).distinct().limit(6).boxed().collect(toSet()));
     }
 
     public Lottos ticketing(long purchaseOfNumber) {
-        return Lottos.from(
-                LongStream.rangeClosed(0, purchaseOfNumber)
-                        .mapToObj(i -> this.ticketing())
-                        .collect(toList()));
+        return Lottos.from(LongStream.rangeClosed(0, purchaseOfNumber)
+                .mapToObj(i -> this.ticketing())
+                .collect(toList()));
     }
 }

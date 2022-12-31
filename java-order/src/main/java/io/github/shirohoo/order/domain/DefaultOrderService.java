@@ -17,8 +17,7 @@ public final class DefaultOrderService implements OrderService {
 
     @Override
     @SuppressWarnings("OptionalGetWithoutIsPresent")
-    public Product order(Order order)
-            throws InterruptedException, SoldOutException, IllegalArgumentException {
+    public Product order(Order order) throws InterruptedException, SoldOutException, IllegalArgumentException {
         // critical section
         try {
             semaphore.acquire();

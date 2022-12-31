@@ -22,8 +22,7 @@ public enum MatchPrize {
 
     static {
         Collector<MatchPrize, Object, Map<Integer, MatchPrize>> collector =
-                collectingAndThen(
-                        toMap(MatchPrize::matchCount, identity()), Collections::unmodifiableMap);
+                collectingAndThen(toMap(MatchPrize::matchCount, identity()), Collections::unmodifiableMap);
 
         map = stream(values()).collect(collector);
     }
