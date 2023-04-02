@@ -1,18 +1,15 @@
 plugins {
     id("java")
+    kotlin("jvm") version "1.8.10"
     id("com.diffplug.spotless") version "6.11.0"
-    kotlin("jvm") version "1.7.10"
 }
-
-val javaVersion by extra { "17" }
 
 allprojects {
     apply(plugin = "java")
-    apply(plugin = "com.diffplug.spotless")
     apply(plugin = "kotlin")
+    apply(plugin = "com.diffplug.spotless")
 
     group = "io.github.shirohoo"
-    java.sourceCompatibility = JavaVersion.VERSION_17
 
     repositories {
         mavenCentral()
@@ -20,7 +17,6 @@ allprojects {
     }
 
     dependencies {
-        testImplementation("com.google.truth:truth:1.1.3")
         testImplementation("org.assertj:assertj-core:3.23.1")
         testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
         testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
@@ -28,8 +24,8 @@ allprojects {
     }
 
     tasks.withType<JavaCompile> {
-        sourceCompatibility = javaVersion
-        targetCompatibility = javaVersion
+        sourceCompatibility = "17"
+        targetCompatibility = "17"
     }
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -45,16 +41,13 @@ allprojects {
 
     spotless {
         java {
-            // parser
             palantirJavaFormat()
-
-            // options
-            target("src/main/java/**/*.java", "src/main/test/**/*.java")
-            formatAnnotations()
-            importOrder()
-            removeUnusedImports()
-            trimTrailingWhitespace()
-            indentWithSpaces(4)
+        }
+        kotlin {
+            ktlint()
+        }
+        kotlinGradle {
+            ktlint()
         }
     }
 }
