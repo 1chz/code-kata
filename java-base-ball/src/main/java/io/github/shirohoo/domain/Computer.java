@@ -5,14 +5,14 @@ public class Computer {
 
     public Computer(Numbers numbers) {
         if (numbers == null) {
-            throw new IllegalArgumentException("입력이 null일 수 없습니다");
+            throw new IllegalArgumentException("input cannot be null");
         }
         this.numbers = numbers;
     }
 
     public Score compareTo(Numbers numbers) {
         if (numbers == null) {
-            throw new IllegalArgumentException("입력이 null일 수 없습니다");
+            throw new IllegalArgumentException("input cannot be null");
         }
 
         return this.numbers.compareTo(numbers);

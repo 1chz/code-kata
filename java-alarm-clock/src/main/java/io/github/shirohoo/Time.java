@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 record Time(String time) {
+    @SuppressWarnings("all")
     public Time {
         try {
             LocalTime.parse(time, DateTimeFormatter.ofPattern("H:mm:ss"));

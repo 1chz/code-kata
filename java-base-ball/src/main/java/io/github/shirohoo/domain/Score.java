@@ -8,14 +8,14 @@ public record Score(int ballCount, int strikeCount) {
     @Override
     public String toString() {
         if (ballCount == 0 && strikeCount == 0) {
-            return "낫싱";
+            return "nothing";
         }
         if (ballCount > 0 && strikeCount == 0) {
-            return "%s볼".formatted(ballCount);
+            return "%d balls".formatted(ballCount);
         }
         if (ballCount == 0 && strikeCount > 0) {
-            return "%s스트라이크".formatted(strikeCount);
+            return "%d strikes".formatted(strikeCount);
         }
-        return "%s볼 %s스트라이크".formatted(ballCount, strikeCount);
+        return "%d balls %d strikes".formatted(ballCount, strikeCount);
     }
 }

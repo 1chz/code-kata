@@ -16,13 +16,7 @@ final class Alarms {
     }
 
     public void registry(Time time) {
-        //        try {
         times.add(time);
-        //        } catch (Exception e) {
-        //            System.out.println(e.getMessage());
-        // do nothing...
-        //        }
-
         System.out.println("Current alarms = " + times);
     }
 

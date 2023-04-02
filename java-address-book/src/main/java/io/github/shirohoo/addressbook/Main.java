@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
+@SuppressWarnings("all")
 public class Main {
     public static void main(String[] args) {
         Path root = Paths.get(System.getProperty("user.home"), "address-book");
@@ -17,7 +18,7 @@ public class Main {
         for (int i = 0; i < count; i++) {
             Data data = Data.builder()
                     .id(UUID.randomUUID())
-                    .name(i + "")
+                    .name(String.valueOf(i))
                     .gender("M")
                     .age(1)
                     .phoneNumber("010-1234-5678")

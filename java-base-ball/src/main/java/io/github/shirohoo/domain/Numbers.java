@@ -19,19 +19,19 @@ public final class Numbers {
 
     public Numbers(String val) {
         if (val == null) {
-            throw new IllegalArgumentException("입력이 null일 수 없습니다");
+            throw new IllegalArgumentException("input cannot be null");
         }
         if (val.length() != 3) {
-            throw new IllegalArgumentException("입력된 값이 3글자가 아닙니다");
+            throw new IllegalArgumentException("The entered value is not 3 characters long");
         }
         if (val.chars().distinct().count() != 3) {
-            throw new IllegalArgumentException("입력에 중복된 값이 있습니다");
+            throw new IllegalArgumentException("Input has duplicate values");
         }
         this.val = val;
     }
 
     public Score compareTo(Numbers other) {
-        Objects.requireNonNull(other, "입력이 null일 수 없습니다");
+        Objects.requireNonNull(other, "input cannot be null");
 
         char[] self = val.toCharArray();
         char[] that = other.val.toCharArray();
