@@ -1,6 +1,5 @@
 package io.github.shirohoo.racing.domain;
 
-
 import java.util.Objects;
 
 public class Car {

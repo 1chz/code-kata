@@ -23,20 +23,18 @@ class CarsTests {
 
     @Test
     void createCars() {
-        assertThatCode(
-                        () -> {
-                            Cars.createCars("car1,car2,car3");
-                        })
+        assertThatCode(() -> {
+                    Cars.createCars("car1,car2,car3");
+                })
                 .doesNotThrowAnyException();
     }
 
     @NullAndEmptySource
     @ParameterizedTest
     void createCarsExceptionIfInputNullOrEmpty(String carNames) {
-        assertThatThrownBy(
-                        () -> {
-                            Cars.createCars(carNames);
-                        })
+        assertThatThrownBy(() -> {
+                    Cars.createCars(carNames);
+                })
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -48,8 +46,7 @@ class CarsTests {
 
     static Stream<Arguments> forward() {
         return Stream.of(
-                Arguments.of((ForwardCondition) () -> true, 1),
-                Arguments.of((ForwardCondition) () -> false, 0));
+                Arguments.of((ForwardCondition) () -> true, 1), Arguments.of((ForwardCondition) () -> false, 0));
     }
 
     @Test

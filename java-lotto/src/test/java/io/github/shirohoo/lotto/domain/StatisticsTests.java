@@ -11,13 +11,11 @@ class StatisticsTests {
 
     @BeforeEach
     void setUp() {
-        statistics =
-                Statistics.from(
-                        Map.of(
-                                MatchPrize.SIX, 1L,
-                                MatchPrize.FIVE, 1L,
-                                MatchPrize.FOUR, 1L,
-                                MatchPrize.THREE, 1L));
+        statistics = Statistics.from(Map.of(
+                MatchPrize.SIX, 1L,
+                MatchPrize.FIVE, 1L,
+                MatchPrize.FOUR, 1L,
+                MatchPrize.THREE, 1L));
     }
 
     @Test

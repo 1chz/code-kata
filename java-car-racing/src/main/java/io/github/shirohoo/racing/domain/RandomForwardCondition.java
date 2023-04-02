@@ -1,6 +1,5 @@
 package io.github.shirohoo.racing.domain;
 
-
 import java.util.random.RandomGenerator;
 
 public class RandomForwardCondition implements ForwardCondition {

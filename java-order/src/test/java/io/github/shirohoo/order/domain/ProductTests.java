@@ -59,9 +59,8 @@ class ProductTests {
         Product take = Product.take(order, storeItem);
 
         // ...then
-        assertAll(
-                () -> assertThat(take.id()).isEqualTo(1),
-                () -> assertThat(take.quantity()).isEqualTo(1));
+        assertAll(() -> assertThat(take.id()).isEqualTo(1), () -> assertThat(take.quantity())
+                .isEqualTo(1));
     }
 
     @Test
@@ -71,8 +70,7 @@ class ProductTests {
         Product storeItem = Product.of(1, 9);
 
         // ...when, then
-        assertThatThrownBy(() -> Product.take(order, storeItem))
-                .isInstanceOf(SoldOutException.class);
+        assertThatThrownBy(() -> Product.take(order, storeItem)).isInstanceOf(SoldOutException.class);
     }
 
     @Test
@@ -85,9 +83,8 @@ class ProductTests {
         Product decrease = product.decreaseQuantity(order);
 
         // ...then
-        assertAll(
-                () -> assertThat(decrease.id()).isEqualTo(1),
-                () -> assertThat(decrease.quantity()).isEqualTo(0));
+        assertAll(() -> assertThat(decrease.id()).isEqualTo(1), () -> assertThat(decrease.quantity())
+                .isEqualTo(0));
     }
 
     @Test

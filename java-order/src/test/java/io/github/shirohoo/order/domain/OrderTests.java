@@ -19,8 +19,7 @@ class OrderTests {
     @ParameterizedTest
     @MethodSource("invalidArgsForOrder")
     void from_입력이_유효하지_않으면_인스턴스가_생성되지_않는다(long id, int quantity) {
-        assertThatThrownBy(() -> Order.from(id, quantity))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Order.from(id, quantity)).isInstanceOf(IllegalArgumentException.class);
     }
 
     public static Stream<Arguments> invalidArgsForOrder() {

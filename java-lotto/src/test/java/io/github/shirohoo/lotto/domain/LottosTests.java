@@ -19,18 +19,13 @@ class LottosTests {
     void shouldReturnStringValue() {
         // given
         Lottos lottos =
-                Lottos.from(
-                        List.of(
-                                Lotto.from(Set.of(1, 2, 3, 4, 5, 6)),
-                                Lotto.from(Set.of(40, 41, 42, 43, 44, 45))));
+                Lottos.from(List.of(Lotto.from(Set.of(1, 2, 3, 4, 5, 6)), Lotto.from(Set.of(40, 41, 42, 43, 44, 45))));
 
         // when
         String stringValue = lottos.stringValue();
 
         // then
-        assertThat(stringValue)
-                .isEqualTo(
-                        "[1, 2, 3, 4, 5, 6]%s[40, 41, 42, 43, 44, 45]".formatted(lineSeparator()));
+        assertThat(stringValue).isEqualTo("[1, 2, 3, 4, 5, 6]%s[40, 41, 42, 43, 44, 45]".formatted(lineSeparator()));
     }
 
     @Test
@@ -38,10 +33,7 @@ class LottosTests {
         // given
         Lotto winningLotto = Lotto.from(Set.of(1, 2, 3, 4, 5, 6));
         Lottos lottos =
-                Lottos.from(
-                        List.of(
-                                Lotto.from(Set.of(1, 2, 3, 4, 5, 6)),
-                                Lotto.from(Set.of(40, 41, 42, 43, 44, 45))));
+                Lottos.from(List.of(Lotto.from(Set.of(1, 2, 3, 4, 5, 6)), Lotto.from(Set.of(40, 41, 42, 43, 44, 45))));
 
         // when
         Statistics statistics = lottos.drawn(winningLotto);

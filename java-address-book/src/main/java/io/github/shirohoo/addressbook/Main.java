@@ -1,6 +1,5 @@
 package io.github.shirohoo.addressbook;
 
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;

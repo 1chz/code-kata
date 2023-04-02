@@ -13,23 +13,17 @@ class ReceiptTests {
 
     @BeforeEach
     void setUp() {
-        receipt =
-                Receipt.from(
-                        Products.from(
-                                List.of(
-                                        Product.from(0, "name", 1_000, 10),
-                                        Product.from(1, "name", 1_000, 10),
-                                        Product.from(2, "name", 1_000, 10),
-                                        Product.from(3, "name", 1_000, 10),
-                                        Product.from(4, "name", 1_000, 10))));
+        receipt = Receipt.from(Products.from(List.of(
+                Product.from(0, "name", 1_000, 10),
+                Product.from(1, "name", 1_000, 10),
+                Product.from(2, "name", 1_000, 10),
+                Product.from(3, "name", 1_000, 10),
+                Product.from(4, "name", 1_000, 10))));
 
-        receiptWithDeliveryFee =
-                Receipt.from(
-                        Products.from(
-                                List.of(
-                                        Product.from(0, "name", 1_000, 10),
-                                        Product.from(1, "name", 1_000, 10),
-                                        Product.from(2, "name", 1_000, 10))));
+        receiptWithDeliveryFee = Receipt.from(Products.from(List.of(
+                Product.from(0, "name", 1_000, 10),
+                Product.from(1, "name", 1_000, 10),
+                Product.from(2, "name", 1_000, 10))));
     }
 
     @Test
@@ -45,17 +39,13 @@ class ReceiptTests {
                 () -> assertThat(receipt.isSeparateDeliveryFee()).isFalse(),
                 () -> assertThat(receipt.deliveryFee()).isZero(),
                 () -> assertThat(receiptWithDeliveryFee.isSeparateDeliveryFee()).isTrue(),
-                () ->
-                        assertThat(receiptWithDeliveryFee.deliveryFee())
-                                .isEqualTo(Receipt.DELIVERY_FEE));
+                () -> assertThat(receiptWithDeliveryFee.deliveryFee()).isEqualTo(Receipt.DELIVERY_FEE));
     }
 
     @Test
     void 주문금액이_50_000원_미만이면_배송비가_추가된다() {
         assertAll(
                 () -> assertThat(receipt.paymentAmount()).isEqualTo(50_000),
-                () ->
-                        assertThat(receiptWithDeliveryFee.paymentAmount())
-                                .isEqualTo(30_000 + Receipt.DELIVERY_FEE));
+                () -> assertThat(receiptWithDeliveryFee.paymentAmount()).isEqualTo(30_000 + Receipt.DELIVERY_FEE));
     }
 }

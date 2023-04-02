@@ -1,6 +1,5 @@
 package io.github.shirohoo.lotto.application.console;
 
-
 import java.util.Scanner;
 
 public class ConsoleInput {

@@ -1,6 +1,5 @@
 package io.github.shirohoo.order.application;
 
-
 import java.util.Scanner;
 
 public final class ConsoleInAdapter {

@@ -1,6 +1,5 @@
 package io.github.shirohoo.racing.application.console;
 
-
 import java.util.Scanner;
 
 public class ConsoleInputAdapter {

@@ -10,5 +10,5 @@ include(
     "java-string-calculator",
     "kt-base-ball",
     "kt-ghost-leg",
-    "kt-string-calculator",
+    "kt-string-calculator"
 )

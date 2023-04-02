@@ -1,6 +1,5 @@
 package io.github.shirohoo.order.application;
 
-
 import io.github.shirohoo.order.domain.DefaultOrderService;
 import io.github.shirohoo.order.domain.Order;
 import io.github.shirohoo.order.domain.OrderService;

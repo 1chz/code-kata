@@ -8,12 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 class StringCalculatorTests {
     @ParameterizedTest
     @CsvSource(
-            value = {
-                "2+44-7*1/5:7.8",
-                "2 + 44 - 7 * 1 / 5:7.8",
-                "2 +44 -7 * 1 /5:7.8",
-                "125161:125161"
-            },
+            value = {"2+44-7*1/5:7.8", "2 + 44 - 7 * 1 / 5:7.8", "2 +44 -7 * 1 /5:7.8", "125161:125161"},
             delimiter = ':')
     void shouldReturnCorrectOperationResult(String args, double expected) {
         // given

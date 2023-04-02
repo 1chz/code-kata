@@ -1,6 +1,6 @@
 package io.github.shirohoo;
 
-import static com.google.common.truth.Truth.assertThat;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -8,10 +8,7 @@ import org.junit.jupiter.api.Test;
 class TimeTests {
     @Test
     void shouldThrownDateTimeParseException() {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> new Time("120000"),
-                "입력 시간 형식이 hh:mm:ss가 아닙니다.");
+        assertThrows(IllegalArgumentException.class, () -> new Time("120000"), "입력 시간 형식이 hh:mm:ss가 아닙니다.");
     }
 
     @Test

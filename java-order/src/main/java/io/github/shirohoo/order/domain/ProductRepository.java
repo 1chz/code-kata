@@ -1,6 +1,5 @@
 package io.github.shirohoo.order.domain;
 
-
 import java.util.Optional;
 
 public interface ProductRepository {

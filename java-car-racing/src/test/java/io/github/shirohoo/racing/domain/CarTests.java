@@ -15,31 +15,28 @@ class CarTests {
     @Test
     void createCar() {
         String carName = "junny";
-        assertThatCode(
-                        () -> {
-                            Car car = Car.from(carName);
-                            assertThat(car).isNotNull();
-                        })
+        assertThatCode(() -> {
+                    Car car = Car.from(carName);
+                    assertThat(car).isNotNull();
+                })
                 .doesNotThrowAnyException();
     }
 
     @Test
     void createCarNameExceptionIfNameLengthGreaterThenFive() {
         String carName = "abcdef";
-        assertThatThrownBy(
-                        () -> {
-                            Car car = Car.from(carName);
-                        })
+        assertThatThrownBy(() -> {
+                    Car car = Car.from(carName);
+                })
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     void createCarExceptionIfNameNullOrEmpty(String carName) {
-        assertThatThrownBy(
-                        () -> {
-                            Car car = Car.from(carName);
-                        })
+        assertThatThrownBy(() -> {
+                    Car car = Car.from(carName);
+                })
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -70,8 +67,7 @@ class CarTests {
 
     static Stream<Arguments> forward() {
         return Stream.of(
-                Arguments.of((ForwardCondition) () -> true, 1),
-                Arguments.of((ForwardCondition) () -> false, 0));
+                Arguments.of((ForwardCondition) () -> true, 1), Arguments.of((ForwardCondition) () -> false, 0));
     }
 
     @Test

@@ -1,6 +1,5 @@
 package io.github.shirohoo.stringcalculator;
 
-
 import java.util.ArrayDeque;
 import java.util.Objects;
 

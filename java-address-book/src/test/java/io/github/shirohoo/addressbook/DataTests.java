@@ -8,15 +8,14 @@ import org.junit.jupiter.api.Test;
 class DataTests {
     @Test
     void build() {
-        Data data =
-                Data.builder()
-                        .id(UUID.randomUUID())
-                        .name("siro")
-                        .gender("M")
-                        .age(28)
-                        .phoneNumber("010-1234-5678")
-                        .address("Korea")
-                        .build();
+        Data data = Data.builder()
+                .id(UUID.randomUUID())
+                .name("siro")
+                .gender("M")
+                .age(28)
+                .phoneNumber("010-1234-5678")
+                .address("Korea")
+                .build();
 
         assertEquals("siro", data.name);
         assertEquals("M", data.gender);

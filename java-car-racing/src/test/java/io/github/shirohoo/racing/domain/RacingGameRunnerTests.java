@@ -13,19 +13,17 @@ class RacingGameRunnerTests {
     void createRacingGame() {
         RacingGameSettings settings = RacingGameSettings.of("siro", 3, () -> true);
 
-        assertThatCode(
-                        () -> {
-                            RacingGameRunner.from(settings);
-                        })
+        assertThatCode(() -> {
+                    RacingGameRunner.from(settings);
+                })
                 .doesNotThrowAnyException();
     }
 
     @Test
     void createRacingGameExceptionIfSettingsNull() {
-        assertThatThrownBy(
-                        () -> {
-                            RacingGameRunner.from(null);
-                        })
+        assertThatThrownBy(() -> {
+                    RacingGameRunner.from(null);
+                })
                 .isInstanceOf(NullPointerException.class);
     }
 
@@ -39,10 +37,7 @@ class RacingGameRunnerTests {
         List<List<Car>> eachRound = racingGameRunner.eachRound();
 
         // ...then
-        assertThat(eachRound)
-                .flatMap(ArrayList::new)
-                .map(Car::currentPosition)
-                .containsExactlyInAnyOrder(1, 2, 3);
+        assertThat(eachRound).flatMap(ArrayList::new).map(Car::currentPosition).containsExactlyInAnyOrder(1, 2, 3);
     }
 
     @Test

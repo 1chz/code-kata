@@ -1,6 +1,5 @@
 package io.github.shirohoo;
 
-
 import java.util.Scanner;
 
 public class ConsoleRunner {

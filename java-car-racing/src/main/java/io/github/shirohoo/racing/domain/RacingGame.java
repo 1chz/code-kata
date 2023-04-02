@@ -1,6 +1,5 @@
 package io.github.shirohoo.racing.domain;
 
-
 import java.util.List;
 
 public interface RacingGame {

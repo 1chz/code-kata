@@ -1,6 +1,5 @@
 package io.github.shirohoo.order.domain;
 
-
 import java.util.List;
 
 public final class Product implements Comparable<Product> {

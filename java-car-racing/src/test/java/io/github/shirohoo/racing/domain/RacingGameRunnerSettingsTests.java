@@ -14,10 +14,9 @@ class RacingGameRunnerSettingsTests {
         String carNames = "shiro,siro";
         int tryCount = 3;
 
-        assertThatCode(
-                        () -> {
-                            RacingGameSettings.of(carNames, tryCount, () -> true);
-                        })
+        assertThatCode(() -> {
+                    RacingGameSettings.of(carNames, tryCount, () -> true);
+                })
                 .doesNotThrowAnyException();
     }
 
@@ -26,10 +25,9 @@ class RacingGameRunnerSettingsTests {
         String carNames = "shiro,siro";
         int tryCount = 0;
 
-        assertThatThrownBy(
-                        () -> {
-                            RacingGameSettings.of(carNames, tryCount, () -> true);
-                        })
+        assertThatThrownBy(() -> {
+                    RacingGameSettings.of(carNames, tryCount, () -> true);
+                })
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -38,10 +36,9 @@ class RacingGameRunnerSettingsTests {
     void createSettingsExceptionIfCarNamesNullOrEmpty(String carNames) {
         int tryCount = 3;
 
-        assertThatThrownBy(
-                        () -> {
-                            RacingGameSettings.of(carNames, tryCount, () -> true);
-                        })
+        assertThatThrownBy(() -> {
+                    RacingGameSettings.of(carNames, tryCount, () -> true);
+                })
                 .isOfAnyClassIn(IllegalArgumentException.class, NullPointerException.class);
     }
 

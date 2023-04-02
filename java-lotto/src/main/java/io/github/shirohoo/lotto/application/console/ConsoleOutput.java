@@ -1,6 +1,5 @@
 package io.github.shirohoo.lotto.application.console;
 
-
 import io.github.shirohoo.lotto.domain.Lottos;
 import io.github.shirohoo.lotto.domain.MatchPrize;
 import io.github.shirohoo.lotto.domain.Statistics;
