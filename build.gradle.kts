@@ -9,7 +9,8 @@ allprojects {
     apply(plugin = "kotlin")
     apply(plugin = "com.diffplug.spotless")
 
-    group = "io.github.shirohoo"
+    group = "io.shirohoo"
+    version = "unspecified"
 
     repositories {
         mavenCentral()

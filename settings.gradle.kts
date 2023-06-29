@@ -1,3 +1,3 @@
 rootProject.name = "code-kata"
 
-include()
+include("kata-blackjack")
