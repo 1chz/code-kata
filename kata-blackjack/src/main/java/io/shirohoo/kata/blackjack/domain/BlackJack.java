@@ -1,7 +1,7 @@
 package io.shirohoo.kata.blackjack.domain;
 
-import static java.util.Arrays.*;
-import static java.util.stream.Collectors.*;
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toList;
 
 import java.util.Collections;
 import java.util.List;
